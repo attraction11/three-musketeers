@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="《CSS世界》实例演示之 outline与镂空效果"/>
+    <meta name="keywords" content="visibility"/>
+    <meta name="author" content="张鑫旭, zhangxinxu"/>
+    <title>outline与镂空效果 » 《CSS世界》演示页面</title>
+    <script>var _speedMark = new Date();</script>
+    <link rel="stylesheet" href="../common/css/demod647.css?0324">
+    <style>
+        .demo {
+            max-width: 360px;
+            text-align: left;
+            margin: auto;
+            word-spacing: 1em;
+        }
+
+        .crop-box,
+        .preview-box {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .crop,
+        .preview {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .crop-area,
+        .preview {
+            width: 80px;
+            height: 80px;
+        }
+
+        .crop-area {
+            position: absolute;
+            left: 88px;
+            top: 56px;
+            outline: 256px solid #000;
+            outline: 256px solid rgba(0, 0, 0, .5);
+            background: url(about:blank);
+            background: linear-gradient(to top, transparent, transparent);
+            filter: alpha(opacity=50);
+            cursor: move;
+        }
+
+        :root .crop-area {
+            filter: none;
+        }
+
+        .crop img,
+        .preview img {
+            display: block;
+            width: 256px;
+            height: 192px;
+        }
+
+        .preview img {
+            position: absolute;
+            left: -88px;
+            top: -56px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <a href="../index.html" class="logo" title="回到demo首页"></a>
+    <!-- <a href="https://css.w3ctech.com/?cssworld.cn" target="_blank" class="mmbb" title="了解本次大会"></a>
+    <style>.mmbb{position: absolute;right:0; width: 560px; height: inherit;background:url(http://wx4.sinaimg.cn/mw690/4b4d632fgy1fpo5e8et0nj20fk01u74q.jpg) no-repeat right center; background-size: contain;}@media screen and (max-width: 640px) {.mmbb{width:calc(100vw - 160px);background-image:url(http://wx1.sinaimg.cn/mw690/4b4d632fgy1fpo5j7hc21j20g304e3zh.jpg);}}</style> -->
+</div>
+<div class="main">
+    <h1>outline与镂空效果实例页面</h1>
+    <div class="show">
+        <h3>展示</h3>
+        <div class="go-bbs"><a href="http://bbs.cssworld.cn/" class="go-bbs">去论坛 &raquo;</a></div>
+        <div class="demo">
+
+            <div class="crop-box">
+                <h4>剪裁（仅演示移动）</h4>
+                <div class="crop">
+                    <div id="cropArea" class="crop-area"></div>
+                    <img src="../images/common/m/1.jpg">
+                </div>
+            </div>
+            <div class="preview-box">
+                <h4>预览</h4>
+                <div class="preview">
+                    <img id="previewImg" src="../images/common/m/1.jpg">
+                </div>
+            </div>
+
+        </div>
+        <h3>代码</h3>
+        <ul class="codes col3">
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>HTML：</h5>
+                    <pre name="code" class="html">&lt;div class="crop-box"&gt;
+    &lt;h4&gt;剪裁（仅演示移动）&lt;/h4&gt;
+    &lt;div class="crop"&gt;
+        &lt;div id="cropArea" class="crop-area"&gt;&lt;/div&gt;
+        &lt;img src="1.jpg"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="preview-box"&gt;
+    &lt;h4&gt;预览&lt;/h4&gt;
+    &lt;div class="preview"&gt;
+        &lt;img id="previewImg" src="1.jpg"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>CSS：</h5>
+                    <pre name="code" class="css">.crop-box,
+.preview-box {
+    display: inline-block;
+    vertical-align: top;
+}
+.crop,
+.preview {
+    position: relative;
+    overflow: hidden;
+}
+.crop-area,
+.preview {
+    width: 80px; height: 80px;
+}
+.crop-area {
+    position: absolute;
+    left: 88px; top: 56px;
+    outline: 256px solid #000;
+    outline: 256px solid rgba(0,0,0,.5);
+    background: url(about:blank);
+    background: linear-gradient(to top, transparent, transparent);
+    filter: alpha(opacity=50);
+    cursor: move;
+}
+:root .crop-area {
+    filter: none;
+}
+.crop img,
+.preview img {
+    display: block;
+    width: 256px; height: 192px;
+}
+.preview img {
+    position: absolute;
+    left: -88px; top: -56px;
+}</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>JS：</h5>
+                    <pre name="code" class="js">var elCropArea = $('#cropArea');
+var elPreviewImg = $('#previewImg');
+
+var data = {};
+
+elCropArea.on('mousedown', function (event) {
+    data = {
+        moving: true,
+        left: elCropArea.position().left,
+        top: elCropArea.position().top,
+        x: event.pageX,
+        y: event.pageY
+    };
+});
+$(document).on({
+    mousemove: function (event) {
+        if (data.moving) {
+            event.preventDefault();
+            // 移动距离
+            var moveX = event.pageX - data.x;
+            var moveY = event.pageY - data.y;
+
+            // 目标坐标
+            var left = data.left + moveX;
+            var top = data.top + moveY;
+
+            // 边界判断
+            if (left &lt; 0) {
+                left = 0;
+            } else if (left + 80 &gt; 256) {
+                left = 176;
+            }
+            if (top &lt; 0) {
+                top = 0;
+            } else if (top + 80 &gt; 192) {
+                top = 112;
+            }
+
+            // 重定位
+            elCropArea.css({
+                left: left,
+                top: top
+            });
+            elPreviewImg.css({
+                left: -1 * left,
+                top: -1 * top
+            });
+        }
+    },
+    mouseup: function () {
+        data.moving = false;
+    }
+});</pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script src="../common/js/jquery.min.js"></script>
+<script>
+  var elCropArea = $('#cropArea');
+  var elPreviewImg = $('#previewImg');
+
+  var data = {};
+
+  elCropArea.on('mousedown', function (event) {
+    data = {
+      moving: true,
+      left: elCropArea.position().left,
+      top: elCropArea.position().top,
+      x: event.pageX,
+      y: event.pageY
+    };
+  });
+  $(document).on({
+    mousemove: function (event) {
+      if (data.moving) {
+        event.preventDefault();
+        // 移动距离
+        var moveX = event.pageX - data.x;
+        var moveY = event.pageY - data.y;
+
+        // 目标坐标
+        var left = data.left + moveX;
+        var top = data.top + moveY;
+
+        // 边界判断
+        if (left < 0) {
+          left = 0;
+        } else if (left + 80 > 256) {
+          left = 176;
+        }
+        if (top < 0) {
+          top = 0;
+        } else if (top + 80 > 192) {
+          top = 112;
+        }
+
+        // 重定位
+        elCropArea.css({
+          left: left,
+          top: top
+        });
+        elPreviewImg.css({
+          left: -1 * left,
+          top: -1 * top
+        });
+      }
+    },
+    mouseup: function () {
+      data.moving = false;
+    }
+  });
+
+</script>
+
+
+<div class="footer">
+    <p>Designed &amp; Powered by <a href="http://www.zhangxinxu.com/" target="_blank">zhangxinxu</a></p>
+    <p><a href="../index.html" class="index">Demo索引地图</a> &emsp; <a href="http://bbs.cssworld.cn/">访问论坛</a></p>
+
+</div>
+<div class="ad_bottom"></div>
+<!-- 以下脚本是无关紧要 -->
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=57424410" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/js/all.js"></script>
+<script type="text/javascript">
+  DlHighlight.HELPERS.highlightByName("code", "pre");
+</script>
+</body>
+</html>

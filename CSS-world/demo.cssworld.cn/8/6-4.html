@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="《CSS世界》实例演示之 letter-spacing与字符动效"/>
+    <meta name="keywords" content="letter-spacing"/>
+    <meta name="author" content="张鑫旭, zhangxinxu"/>
+    <title>letter-spacing与字符动效 » 《CSS世界》演示页面</title>
+    <script>var _speedMark = new Date();</script>
+    <link rel="stylesheet" href="../common/css/demod647.css?0324">
+    <style>
+        .title {
+            width: 8em;
+            margin: auto;
+            white-space: nowrap;
+            animation: textIn 1s both;
+            letter-spacing: -200px;
+        }
+
+        .tl {
+            text-align: left;
+        }
+
+        .tc {
+            text-align: center;
+        }
+
+        .tr {
+            text-align: right;
+        }
+
+        .loading {
+            animation: textLoading 1s both linear infinite alternate;
+        }
+
+        @keyframes textIn {
+            0% {
+                opacity: 0;
+                letter-spacing: -200px;
+            }
+            60% {
+                letter-spacing: 5px;
+            }
+            100% {
+                opacity: 1;
+                letter-spacing: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <a href="../index.html" class="logo" title="回到demo首页"></a>
+    <!-- <a href="https://css.w3ctech.com/?cssworld.cn" target="_blank" class="mmbb" title="了解本次大会"></a>
+    <style>.mmbb{position: absolute;right:0; width: 560px; height: inherit;background:url(http://wx4.sinaimg.cn/mw690/4b4d632fgy1fpo5e8et0nj20fk01u74q.jpg) no-repeat right center; background-size: contain;}@media screen and (max-width: 640px) {.mmbb{width:calc(100vw - 160px);background-image:url(http://wx1.sinaimg.cn/mw690/4b4d632fgy1fpo5j7hc21j20g304e3zh.jpg);}}</style> -->
+</div>
+<div class="main">
+    <h1>letter-spacing与字符动效实例页面</h1>
+    <div class="show">
+        <h3>展示</h3>
+        <div class="go-bbs"><a href="http://bbs.cssworld.cn/" class="go-bbs">去论坛 &raquo;</a></div>
+        <div class="demo">
+
+            <div class="title tl">我是标题文字内容</div>
+            <!-- <div class="title tc">我是标题居中对齐</div>
+            <div class="title tr">我是标题居右对齐</div> -->
+        </div>
+        <h3>代码</h3>
+        <ul class="codes col2">
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>HTML：</h5>
+                    <pre name="code" class="html">&lt;div class="title"&gt;我是标题文字内容&lt;/div&gt;</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>CSS：</h5>
+                    <pre name="code" class="css">.title {
+  width: 8em;
+  margin: auto;
+  white-space: nowrap;
+  animation: textIn 1s both;
+  letter-spacing: -200px;
+}
+@keyframes textIn {
+  0% {
+    opacity: 0;
+    letter-spacing: -200px;
+  }
+  60% {
+    letter-spacing: 5px;
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: 0;
+  }
+}</pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+  document.querySelector('.title').addEventListener('click', function () {
+    if (this.classList) {
+      this.classList.remove('title');
+      this.offsetWidth;
+      this.classList.add('title');
+    }
+  });
+</script>
+
+
+<div class="footer">
+    <p>Designed &amp; Powered by <a href="http://www.zhangxinxu.com/" target="_blank">zhangxinxu</a></p>
+    <p><a href="../index.html" class="index">Demo索引地图</a> &emsp; <a href="http://bbs.cssworld.cn/">访问论坛</a></p>
+
+</div>
+<div class="ad_bottom"></div>
+<!-- 以下脚本是无关紧要 -->
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=57424410" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/js/all.js"></script>
+<script type="text/javascript">
+  DlHighlight.HELPERS.highlightByName("code", "pre");
+</script>
+</body>
+</html>

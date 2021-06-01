@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="《CSS世界》实例演示之 table-layout:auto的表格的一柱擎天现象"/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content="张鑫旭, zhangxinxu"/>
+    <title>table-layout:auto的表格的一柱擎天现象 » 《CSS世界》演示页面</title>
+    <script>var _speedMark = new Date();</script>
+    <link rel="stylesheet" href="../common/css/demod647.css?0324">
+    <style>
+        .constr {
+            width: calc(100% - 40px);
+            max-width: 360px;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 280px;
+            margin: 0 auto;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <a href="../index.html" class="logo" title="回到demo首页"></a>
+    <!-- <a href="https://css.w3ctech.com/?cssworld.cn" target="_blank" class="mmbb" title="了解本次大会"></a>
+    <style>.mmbb{position: absolute;right:0; width: 560px; height: inherit;background:url(http://wx4.sinaimg.cn/mw690/4b4d632fgy1fpo5e8et0nj20fk01u74q.jpg) no-repeat right center; background-size: contain;}@media screen and (max-width: 640px) {.mmbb{width:calc(100vw - 160px);background-image:url(http://wx1.sinaimg.cn/mw690/4b4d632fgy1fpo5j7hc21j20g304e3zh.jpg);}}</style> -->
+</div>
+<div class="main">
+    <h1>table-layout:auto的表格的一柱擎天现象实例页面</h1>
+    <div class="show">
+        <h3>展示</h3>
+        <div class="go-bbs"><a href="http://bbs.cssworld.cn/" class="go-bbs">去论坛 &raquo;</a></div>
+        <div class="demo">
+
+            <div class="constr">
+                <table>
+                    <tr>
+                        <td>就1列就1列就1列就1列就1列</td>
+                        <td>当父级relative，且宽度很小的时候，例如{position:relative; width:20px;}，absolute元素也会出现一柱擎天的情况；</td>
+                        <td>当父级relative，且宽度很小的时候，例如{position:relative; width:20px;}，absolute元素也会出现一柱擎天的情况；</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <h3>代码</h3>
+        <ul class="codes col2">
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>HTML：</h5>
+                    <pre name="code" class="html">&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;就1列就1列就1列就1列就1列&lt;/td&gt;
+        &lt;td&gt;当父级relative，且宽度很小的时候，例如...&lt;/td&gt;
+        &lt;td&gt;当父级relative，且宽度很小的时候，例如...&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>CSS：</h5>
+                    <pre name="code" class="css">table {
+    width: 280px;
+    margin: 0 auto;
+    text-align: left;
+}</pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="footer">
+    <p>Designed &amp; Powered by <a href="http://www.zhangxinxu.com/" target="_blank">zhangxinxu</a></p>
+    <p><a href="../index.html" class="index">Demo索引地图</a> &emsp; <a href="http://bbs.cssworld.cn/">访问论坛</a></p>
+
+</div>
+<div class="ad_bottom"></div>
+<!-- 以下脚本是无关紧要 -->
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=57424410" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/js/all.js"></script>
+<script type="text/javascript">
+  DlHighlight.HELPERS.highlightByName("code", "pre");
+</script>
+</body>
+</html>

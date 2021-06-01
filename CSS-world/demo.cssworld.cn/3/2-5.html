@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="《CSS世界》实例演示之 按钮元素“包裹性”示意"/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content="张鑫旭, zhangxinxu"/>
+    <title>按钮元素“包裹性”示意 » 《CSS世界》演示页面</title>
+    <script>var _speedMark = new Date();</script>
+    <link rel="stylesheet" href="../common/css/demod647.css?0324">
+    <style>
+        .constr {
+            width: 240px;
+            margin: 20px auto;
+            color: #fff;
+        }
+
+        .box {
+            padding: 10px;
+            background-color: #cd0000;
+            text-align: center;
+        }
+
+        .content {
+            display: inline-block;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <a href="../index.html" class="logo" title="回到demo首页"></a>
+    <!-- <a href="https://css.w3ctech.com/?cssworld.cn" target="_blank" class="mmbb" title="了解本次大会"></a>
+    <style>.mmbb{position: absolute;right:0; width: 560px; height: inherit;background:url(http://wx4.sinaimg.cn/mw690/4b4d632fgy1fpo5e8et0nj20fk01u74q.jpg) no-repeat right center; background-size: contain;}@media screen and (max-width: 640px) {.mmbb{width:calc(100vw - 160px);background-image:url(http://wx1.sinaimg.cn/mw690/4b4d632fgy1fpo5j7hc21j20g304e3zh.jpg);}}</style> -->
+</div>
+<div class="main">
+    <h1>按钮元素“包裹性”示意实例页面</h1>
+    <div class="show">
+        <h3>展示</h3>
+        <div class="go-bbs"><a href="http://bbs.cssworld.cn/" class="go-bbs">去论坛 &raquo;</a></div>
+        <div class="demo">
+
+            <div class="constr">
+                <div class="box">
+                    <p id="conMore" class="content">文字内容</p>
+                </div>
+                <p>
+                    <button id="btnMore">更多文字</button>
+                </p>
+            </div>
+        </div>
+        <h3>代码</h3>
+        <ul class="codes col3">
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>HTML：</h5>
+                    <pre class="DlHighlight html"><span class="paren xml-tagangle">&lt;</span><span
+                            class="keyword xml-tag xml-tag-open">div</span> <span
+                            class="builtin xml-attribute">class</span><span class="undefined"></span><span
+                            class="operator">=</span><span class="string"><span class="before">"</span>box<span
+                            class="after">"</span></span><span class="paren xml-tagangle">&gt;</span>
+  <span class="paren xml-tagangle">&lt;</span><span class="keyword xml-tag xml-tag-open">p</span> <span
+                                class="builtin xml-attribute">id</span><span class="undefined"></span><span
+                                class="operator">=</span><span class="string"><span class="before">"</span>conMore<span
+                                class="after">"</span></span> <span class="builtin xml-attribute">class</span><span
+                                class="undefined"></span><span class="operator">=</span><span class="string"><span
+                                class="before">"</span>content<span class="after">"</span></span><span
+                                class="paren xml-tagangle">&gt;</span><span id="conCode">文字内容</span><span
+                                class="paren xml-tagangle">&lt;/</span><span
+                                class="keyword xml-tag xml-tag-close">p</span><span
+                                class="paren xml-tagangle">&gt;</span>
+<span class="paren xml-tagangle">&lt;/</span><span class="keyword xml-tag xml-tag-close">div</span><span
+                                class="paren xml-tagangle">&gt;</span>
+<span class="comment"><span class="before">&lt;!-- 按钮</span> <span class="after">--&gt;</span></span>
+<span class="paren xml-tagangle">&lt;</span><span class="keyword xml-tag xml-tag-open">p</span><span
+                                class="paren xml-tagangle">&gt;</span><span class="paren xml-tagangle">&lt;</span><span
+                                class="keyword xml-tag xml-tag-open">button</span> <span class="builtin xml-attribute">id</span><span
+                                class="undefined"></span><span class="operator">=</span><span class="string"><span
+                                class="before">"</span>btnMore<span class="after">"</span></span><span
+                                class="paren xml-tagangle">&gt;</span>更多文字<span
+                                class="paren xml-tagangle">&lt;/</span><span class="keyword xml-tag xml-tag-close">button</span><span
+                                class="paren xml-tagangle">&gt;</span><span class="paren xml-tagangle">&lt;/</span><span
+                                class="keyword xml-tag xml-tag-close">p</span><span
+                                class="paren xml-tagangle">&gt;</span></pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>CSS：</h5>
+                    <pre name="code" class="css">.box {
+  padding: 10px;
+  background-color: #cd0000;
+  text-align: center;
+}
+.content {
+  display: inline-block;
+  text-align: left;
+}</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>JavaScript：</h5>
+                    <pre name="code" class="js">var btn = document.getElementById('btnMore'),
+  content = document.getElementById('conMore');
+
+if (btn &amp;&amp; content) {
+  btn.onclick = function() {
+    content.innerHTML += '-新增文字';
+  };
+}</pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+  var btn = document.getElementById('btnMore'), content = document.getElementById('conMore');
+
+  if (btn && content) {
+    btn.onclick = function () {
+      content.innerHTML += '-新增文字';
+
+      callback();
+    };
+  }
+
+  // 示意源代码同步变化的元素
+  var callback = function () {
+    var code = document.getElementById('conCode');
+    if (code) {
+      code.innerHTML = content.innerHTML;
+    }
+  };
+
+</script>
+
+
+<div class="footer">
+    <p>Designed &amp; Powered by <a href="http://www.zhangxinxu.com/" target="_blank">zhangxinxu</a></p>
+    <p><a href="../index.html" class="index">Demo索引地图</a> &emsp; <a href="http://bbs.cssworld.cn/">访问论坛</a></p>
+
+</div>
+<div class="ad_bottom"></div>
+<!-- 以下脚本是无关紧要 -->
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=57424410" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/js/all.js"></script>
+<script type="text/javascript">
+  DlHighlight.HELPERS.highlightByName("code", "pre");
+</script>
+</body>
+</html>

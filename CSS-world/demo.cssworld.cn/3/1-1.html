@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="《CSS世界》实例演示之 block水平元素与清除浮动"/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content="张鑫旭, zhangxinxu"/>
+    <title>block水平元素与清除浮动 » 《CSS世界》演示页面</title>
+    <script>var _speedMark = new Date();</script>
+    <link rel="stylesheet" href="../common/css/demod647.css?0324">
+    <style>
+        .constr {
+            width: calc(100% - 40px);
+            max-width: 360px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .constr:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .constr > h6 {
+            margin: 1em 0 .5em;
+            font-weight: bold;
+        }
+
+        .box {
+            padding: 10px;
+            background-color: #cd0000;
+        }
+
+        .box > img {
+            float: left;
+        }
+
+        .box:after {
+            content: "";
+            clear: both;
+        }
+
+        .clear-block:after {
+            display: block;
+        }
+
+        .clear-table:after {
+            display: table;
+        }
+
+        .clear-list-item:after {
+            display: list-item;
+        }
+
+        .copymm {
+            padding-top: 50px;
+            color: #999;
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <a href="../index.html" class="logo" title="回到demo首页"></a>
+    <!-- <a href="https://css.w3ctech.com/?cssworld.cn" target="_blank" class="mmbb" title="了解本次大会"></a>
+    <style>.mmbb{position: absolute;right:0; width: 560px; height: inherit;background:url(http://wx4.sinaimg.cn/mw690/4b4d632fgy1fpo5e8et0nj20fk01u74q.jpg) no-repeat right center; background-size: contain;}@media screen and (max-width: 640px) {.mmbb{width:calc(100vw - 160px);background-image:url(http://wx1.sinaimg.cn/mw690/4b4d632fgy1fpo5j7hc21j20g304e3zh.jpg);}}</style> -->
+</div>
+<div class="main">
+    <h1>block水平元素与清除浮动实例页面</h1>
+    <div class="show">
+        <h3>展示</h3>
+        <div class="go-bbs"><a href="http://bbs.cssworld.cn/" class="go-bbs">去论坛 &raquo;</a></div>
+        <div class="demo">
+
+            <div class="constr">
+                <div id="box" class="box">
+                    <img src="../images/common/l/1.jpg" width="256" height="192">
+                </div>
+            </div>
+            <div class="constr">
+                <h6>请选择清除浮动的方法：</h6>
+                <pre>.clear:after {
+    content: '';
+    display: <select id="select">
+        <option value="">请选择</option>
+        <option value="block">block</option>
+        <option value="table">table</option>
+        <option value="list-item">list-item</option>
+    </select>;
+    clear: both;
+}</pre>
+
+                <p class="copymm">此美女图片版权所有，注意不要复制与传播</p>
+            </div>
+        </div>
+        <h3>代码</h3>
+        <ul class="codes col2">
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>HTML：</h5>
+                    <pre name="code" class="html">
+&lt;div class="box clear"&gt;
+    &lt;img src="/images/common/l/1.jpg"&gt;
+&lt;/div&gt;</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>CSS：</h5>
+                    <pre class="DlHighlight css"><span class="css-class"><span class="before">.</span>box</span> <span
+                            class="paren css-block-open">{</span>
+    <span class="builtin css-declaration-kw">padding<span class="after">:</span></span> <span class="css-length">10<span
+                                class="after">px</span></span>;
+    <span class="builtin css-declaration-kw">background-color<span class="after">:</span></span> <span
+                                class="css-color-spec"><span class="before">#</span>cd0000</span>;
+<span class="paren css-block-close">}</span>
+<span class="css-class"><span class="before">.</span>box</span> &gt; img <span class="paren css-block-open">{</span>
+    <span class="builtin css-declaration-kw">float<span class="after">:</span></span> left;
+<span class="paren css-block-close">}</span>
+
+<span class="css-class"><span class="before">.</span>clear</span><span class="css-pseudo-class"><span
+                                class="before">:</span>after</span> <span class="paren css-block-open">{</span>
+    <span class="builtin css-declaration-kw">content<span class="after">:</span></span> <span class="string"><span
+                                class="before">"</span><span class="after">"</span></span>;
+    <span class="builtin css-declaration-kw">display<span class="after">:</span></span> <span class="string"><span
+                                class="before">'</span><span id="display"></span><span class="after">'</span></span>;
+    <span class="builtin css-declaration-kw">clear<span class="after">:</span></span> both;
+<span class="paren css-block-close">}</span></pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+  var eleSel = document.getElementById('select'),
+    eleBox = document.getElementById('box');
+
+  var eleCode = document.getElementById('display');
+
+  if (eleSel && eleBox) {
+    eleSel.onchange = function () {
+      if (this.value) {
+        eleBox.className = 'box clear-' + this.value;
+      } else {
+        eleBox.className = 'box';
+      }
+
+      if (eleCode) {
+        eleCode.innerHTML = this.value;
+      }
+    };
+  }
+
+</script>
+
+
+<div class="footer">
+    <p>Designed &amp; Powered by <a href="http://www.zhangxinxu.com/" target="_blank">zhangxinxu</a></p>
+    <p><a href="../index.html" class="index">Demo索引地图</a> &emsp; <a href="http://bbs.cssworld.cn/">访问论坛</a></p>
+
+</div>
+<div class="ad_bottom"></div>
+<!-- 以下脚本是无关紧要 -->
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=57424410" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/js/all.js"></script>
+<script type="text/javascript">
+  DlHighlight.HELPERS.highlightByName("code", "pre");
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="aaron"></div>
+<script type="text/javascript">
+var $$ = aQuery = function (selector) {
+    return new aQuery.fn.init(selector)
+}
+
+aQuery.fn = aQuery.prototype = {
+  name: 'well',
+  init: function (selector) {
+    this.selector = selector
+    return this
+  },
+  constructor: aQuery
+}
+
+aQuery.fn.init.prototype = aQuery.fn
+
+aQuery.extend = aQuery.fn.extend = function () {
+  var options, src, copy,
+    target = arguments[0] || {},
+    i = 1,
+    length = arguments.length;
+
+    if (i === length) {
+      target = this
+      i--
+    }
+    for (; i < length; i++) {
+      if ((options = arguments[i]) != null) {
+        for (name in options) {
+          copy = options[name]
+          target[name] = copy
+        }
+      }
+    }
+    return target
+}
+
+aQuery.fn.extend({
+  setName: function (myName) {
+    this.myName = myName
+    return this
+  },
+  getName: function (name) {
+    document.getElementById('aaron').innerText = name
+    return this
+  }
+})
+
+    $$().setName('策士1111')
+    $$().getName('策士1111')
+
+</script>
+</body>
+</html>

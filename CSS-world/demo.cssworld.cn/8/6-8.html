@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="《CSS世界》实例演示之 一行列表内容的两端对齐效果"/>
+    <meta name="keywords" content="text-align, justify"/>
+    <meta name="author" content="张鑫旭, zhangxinxu"/>
+    <title>一行列表内容的两端对齐效果 » 《CSS世界》演示页面</title>
+    <script>var _speedMark = new Date();</script>
+    <link rel="stylesheet" href="../common/css/demod647.css?0324">
+    <style>
+        .container {
+            width: 300px;
+            margin: 20px auto;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .justify {
+            background-color: #f0f3f9;
+            text-align: justify;
+            font-size: .1px;
+            font-size: -webkit-calc(0px + 0px);
+        }
+
+        .justify:after {
+            content: "";
+            display: inline-table;
+            width: 100%;
+            vertical-align: bottom;
+        }
+
+        .justify img {
+            width: 128px;
+            height: 96px;
+            vertical-align: top;
+        }
+
+        .justify li {
+            display: inline-block;
+            width: 128px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .justify p {
+            margin-top: .5em;
+        }
+
+        .tips {
+            font-size: 12px;
+            margin: 1.5em 0 1em;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <a href="../index.html" class="logo" title="回到demo首页"></a>
+    <!-- <a href="https://css.w3ctech.com/?cssworld.cn" target="_blank" class="mmbb" title="了解本次大会"></a>
+    <style>.mmbb{position: absolute;right:0; width: 560px; height: inherit;background:url(http://wx4.sinaimg.cn/mw690/4b4d632fgy1fpo5e8et0nj20fk01u74q.jpg) no-repeat right center; background-size: contain;}@media screen and (max-width: 640px) {.mmbb{width:calc(100vw - 160px);background-image:url(http://wx1.sinaimg.cn/mw690/4b4d632fgy1fpo5j7hc21j20g304e3zh.jpg);}}</style> -->
+</div>
+<div class="main">
+    <h1>一行列表内容的两端对齐效果实例页面</h1>
+    <div class="show">
+        <h3>展示</h3>
+        <div class="go-bbs"><a href="http://bbs.cssworld.cn/" class="go-bbs">去论坛 &raquo;</a></div>
+        <div class="container">
+
+            <ul class="justify">
+                <li>
+                    <img src="../images/common/m/1.jpg">
+                    <p>图标描述1</p>
+                </li>
+                <li>
+                    <img src="../images/common/m/1.jpg">
+                    <p>图标描述2</p>
+                </li>
+            </ul>
+            <p class="tips">Tips: 点击上面列表，容器宽度变换</p>
+        </div>
+        <h3>代码</h3>
+        <ul class="codes col3">
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>HTML：</h5>
+                    <pre name="code" class="html">&lt;ul class="justify"&gt;
+  &lt;li&gt;
+    &lt;img src="/images/common/m/1.jpg"&gt;
+    &lt;p&gt;图标描述1&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;img src="/images/common/m/1.jpg"&gt;
+    &lt;p&gt;图标描述2&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>CSS：</h5>
+                    <pre name="code" class="css">.justify {
+  background-color: #f0f3f9;
+  text-align: justify;
+  font-size: .1px;
+  font-size: -webkit-calc(0px + 0px);
+}
+.justify:after {
+  content: "";
+  display: inline-table;
+  width: 100%;
+  vertical-align: bottom;
+}
+.justify img {
+  width: 128px;
+  height: 96px;
+  vertical-align: top;
+}
+.justify li {
+  display: inline-block;
+  width: 128px;
+  font-size: 14px;
+  text-align: center;
+}
+.justify p {
+  margin-top: .5em;
+}</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>JS：</h5>
+                    <pre name="code" class="js">var eleBox = document.querySelector('.justify');
+if (eleBox) {
+  eleBox.onclick = function () {
+    this.parentNode.style.width = Math.round(260 + (Math.min(screen.width, 400) - 260) * Math.random()) + 'px';
+  };
+}</pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript">
+  var eleBox = document.querySelector('.justify');
+  if (eleBox) {
+    eleBox.onclick = function () {
+      this.parentNode.style.width = Math.round(260 + (Math.min(screen.width, 400) - 260) * Math.random()) + 'px';
+    };
+  }
+</script>
+
+
+<div class="footer">
+    <p>Designed &amp; Powered by <a href="http://www.zhangxinxu.com/" target="_blank">zhangxinxu</a></p>
+    <p><a href="../index.html" class="index">Demo索引地图</a> &emsp; <a href="http://bbs.cssworld.cn/">访问论坛</a></p>
+
+</div>
+<div class="ad_bottom"></div>
+<!-- 以下脚本是无关紧要 -->
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=57424410" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/js/all.js"></script>
+<script type="text/javascript">
+  DlHighlight.HELPERS.highlightByName("code", "pre");
+</script>
+</body>
+</html>

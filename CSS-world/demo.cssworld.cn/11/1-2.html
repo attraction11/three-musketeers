@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="《CSS世界》实例演示之 outline与大面积色块"/>
+    <meta name="keywords" content="outline, CSS, 色块"/>
+    <meta name="author" content="张鑫旭, zhangxinxu"/>
+    <title>outline与底部屏幕等高的大面积色块 » 《CSS世界》演示页面</title>
+    <style type="text/css">
+        body {
+            font: menu;
+            font-size: 14px;
+            line-height: 1.42858
+        }
+
+        body, ul, ol, p, pre, h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+        }
+
+        pre {
+            font-family: Monaco, Consolas, "Lucida Console", monospace;
+            font-size: 100%;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        ul, ol {
+            padding: 0;
+            list-style: none;
+        }
+
+        .header {
+            height: 66px;
+            background: #a0b3d6;
+        }
+
+        h1 {
+            line-height: 48px;
+            margin: 0;
+            padding: 0 20px;
+            text-align: center;
+            font-size: 18px;
+            background-color: #c1d5eb;
+            font-family: 'simhei', 'kaiti';
+            font-weight: bold;
+            text-shadow: 0px 1px #f2f2f2;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        h3 {
+            line-height: 36px;
+            margin: 0;
+            font-size: 16px;
+            background-color: #f0f3f9;
+            padding-left: 30px;
+            border-bottom: 1px solid #ededed;
+            color: #4e4e4e;
+            text-shadow: 0px 1px white;
+        }
+
+        h4, h5, h6 {
+            font-size: 100%;
+        }
+
+        .logo {
+            position: absolute;
+            width: 239px;
+            height: 66px;
+            background: url(../common/css/images/logo.png) no-repeat 30px 50%;
+            background-size: 158px 30px;
+        }
+
+        .codes {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .code_li {
+            float: left;
+        }
+
+        .col3 > li {
+            width: 33.3%;
+        }
+
+        .col2 > li {
+            width: 50%;
+        }
+
+        .col1 > li {
+            float: none;
+        }
+
+        .code_x {
+            padding: 10px 10px 20px 30px;
+            position: relative;
+        }
+
+        .code_x > h5 {
+            line-height: 3;
+        }
+
+        .code_li:before {
+            content: '';
+            width: inherit;
+            top: 0;
+            bottom: 0;
+            position: absolute;
+            border-left: 1px solid #f0f0f0;
+        }
+
+        .code_li:first-child:before {
+            border-left: 0;
+        }
+
+        .code_li:hover:before {
+            background-color: #fafafc;
+        }
+
+        /*hl.css*/
+        .DlHighlight .keyword {
+            color: #00f
+        }
+
+        .DlHighlight .builtin {
+            color: #22c
+        }
+
+        .DlHighlight .string {
+            color: #282
+        }
+
+        .DlHighlight .string .before, .DlHighlight .string .after {
+            color: #040
+        }
+
+        .DlHighlight .regexp {
+            color: #b2c
+        }
+
+        .DlHighlight .regexp .before, .DlHighlight .regexp .after {
+            color: #509
+        }
+
+        .DlHighlight .comment {
+            color: #c22
+        }
+
+        .DlHighlight .comment-line {
+            color: #999
+        }
+
+        .css .comment-line {
+            color: #22c
+        }
+
+        .DlHighlight .comment .before, .DlHighlight .comment .after {
+            color: #baa
+        }
+
+        .DlHighlight .hashkey {
+            color: #a51
+        }
+
+        .DlHighlight .hasharrow {
+            color: #f00
+        }
+
+        .DlHighlight .paren {
+            color: #009
+        }
+
+        .DlHighlight .operator {
+            color: #077
+        }
+
+        .DlHighlight .error {
+            background-color: #c00;
+            color: #fff
+        }
+
+        .DlHighlight .line-numbers {
+            float: left;
+            margin-left: -4.5em;
+            width: 3em;
+            text-align: right;
+            color: #999;
+            font: .9em tahoma, verdana, sans-serif;
+            padding-top: .05em
+        }
+
+        .DlHighlight .line-numbers:after {
+            content: "."
+        }
+
+        .DlHighlight .xml-tag-close .before {
+            color: #52a
+        }
+
+        .DlHighlight .xml-entity {
+            color: #b2a
+        }
+
+        .DlHighlight .xml-entity .before, .DlHighlight .xml-entity .after {
+            color: #607
+        }
+
+        .DlHighlight .xml-tag {
+            font-weight: normal
+        }
+
+        .DlHighlight .css-block-open, .DlHighlight .css-block-close {
+            color: #f0f
+        }
+
+        .DlHighlight .css-class {
+            color: #f0f
+        }
+
+        .DlHighlight .css-pseudo-class {
+            color: #f0f
+        }
+
+        .DlHighlight .css-id {
+            color: #f0f
+        }
+
+        .DlHighlight .css-color-spec {
+            color: #00f
+        }
+
+        .DlHighlight .css-length {
+            color: #00f
+        }
+
+        .DlHighlight .css-declaration-kw {
+            color: #009
+        }
+
+        .DlHighlight .css-comma {
+            color: red
+        }
+
+        @media screen and (max-width: 1024px) {
+            .col3 > li {
+                float: none;
+                width: auto;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            .col2 > li {
+                float: none;
+                width: auto;
+            }
+
+            .logo {
+                background-position: 20px 50%;
+            }
+
+            .show > h3, .code_x {
+                padding-left: 20px;
+            }
+        }
+    </style>
+    <style type="text/css">
+        .footer {
+            height: 50px;
+            border-top: 1px solid #486aaa;
+        }
+
+        .footer > p {
+            position: absolute;
+            left: 0;
+            right: 0;
+            text-align: center;
+            padding: 15px 0;
+            text-shadow: 1px 1px #cad5eb;
+            background-color: #a0b3d6;
+            outline: 9999px solid #a0b3d6;
+            clip: rect(0 9999px 9999px 0);
+        }
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <a href="../index.html" class="logo" title="回到demo首页"></a>
+</div>
+<div class="main">
+    <h1>outline与底部填满屏幕的大面积色块实例页面</h1>
+    <div class="show">
+        <h3>代码</h3>
+        <ul class="codes col2">
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>HTML：</h5>
+                    <pre name="code" class="html">&lt;div class="footer"&gt;
+    &lt;p&gt;Designed &amp;amp; Powered by zhangxinxu&lt;/p&gt;
+&lt;/div&gt;</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>CSS：</h5>
+                    <pre name="code" class="css">.footer {
+    height: 50px;
+}
+.footer > p {
+    position: absolute;
+    left: 0; right: 0;
+    text-align: center;
+    padding: 15px 0;
+    background-color: #a0b3d6;
+    outline: 9999px solid #a0b3d6;
+    clip: rect(0 9999px 9999px 0);
+}</pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="footer">
+    <p>Designed &amp; Powered by <a href="http://www.zhangxinxu.com/" target="_blank">zhangxinxu</a></p>
+    <p><a href="../index.html" class="index">Demo索引地图</a> &emsp; <a href="http://bbs.cssworld.cn/">访问论坛</a></p>
+
+</div>
+<div class="ad_bottom"></div>
+<!-- 以下脚本是无关紧要 -->
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=57424410" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/js/all.js"></script>
+<script type="text/javascript">
+  DlHighlight.HELPERS.highlightByName("code", "pre");
+</script>
+</body>
+</html>

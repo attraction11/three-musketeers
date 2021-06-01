@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript" src="underscore-1.8.3.js"></script>
+<!--<script type="text/javascript" src="demo.js"></script>-->
+<script>
+  var person1 = {
+    child: {
+      nickName: 'Kevin'
+    }
+  }
+
+  var person2 = {
+    child: {
+      nickName: 'Daisy'
+    }
+  }
+
+  var result = _.map([person1, person2], ['child', 'nickName']);
+  console.log(result)
+</script>
+</body>
+</html>

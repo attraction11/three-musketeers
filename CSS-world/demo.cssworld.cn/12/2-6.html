@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="《CSS世界》实例演示之 CSS writing-mode与兼容的图标旋转效果"/>
+    <meta name="keywords" content="writing-mode, 图标，旋转"/>
+    <meta name="author" content="张鑫旭, zhangxinxu"/>
+    <title>CSS writing-mode与兼容的图标旋转效果 » 《CSS世界》演示页面</title>
+    <script>var _speedMark = new Date();</script>
+    <link rel="stylesheet" href="../common/css/demod647.css?0324">
+    <style>
+        .demo {
+            width: 120px;
+            margin: auto;
+            text-align: left;
+            line-height: 1;
+        }
+
+        @font-face {
+            font-family: Arrow;
+            src: url("../fonts/12/arrowd41d.eot?");
+            src: local("Any"),
+            url("../fonts/12/arrow.woff") format("woff"),
+            url("../fonts/12/arrow.ttf");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .icon-play {
+            font-family: Arrow;
+        }
+
+        .icon-play ~ .icon-play {
+            margin: 0 .5em 0 -.5em;
+            margin-start: 0;
+            margin-end: 0;
+        }
+
+        .verticle-mode {
+            writing-mode: tb-rl;
+            -webkit-writing-mode: vertical-rl;
+            writing-mode: vertical-rl;
+        }
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <a href="../index.html" class="logo" title="回到demo首页"></a>
+    <!-- <a href="https://css.w3ctech.com/?cssworld.cn" target="_blank" class="mmbb" title="了解本次大会"></a>
+    <style>.mmbb{position: absolute;right:0; width: 560px; height: inherit;background:url(http://wx4.sinaimg.cn/mw690/4b4d632fgy1fpo5e8et0nj20fk01u74q.jpg) no-repeat right center; background-size: contain;}@media screen and (max-width: 640px) {.mmbb{width:calc(100vw - 160px);background-image:url(http://wx1.sinaimg.cn/mw690/4b4d632fgy1fpo5j7hc21j20g304e3zh.jpg);}}</style> -->
+</div>
+<div class="main">
+    <h1>CSS writing-mode与兼容的图标旋转效果实例页面</h1>
+    <div class="show">
+        <h3>展示</h3>
+        <div class="go-bbs"><a href="http://bbs.cssworld.cn/" class="go-bbs">去论坛 &raquo;</a></div>
+        <div class="demo">
+
+            <p><strong>默认流</strong></p>
+            <span class="icon-play">r</span> 箭头朝右
+
+            <p><strong>垂直流</strong></p>
+            <span class="icon-play verticle-mode">r</span> 箭头朝下
+        </div>
+        <h3>代码</h3>
+        <ul class="codes col2">
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>HTML：</h5>
+                    <pre name="code" class="html">&lt;p&gt;&lt;strong&gt;默认流&lt;/strong&gt;&lt;/p&gt;
+&lt;span class="icon-play"&gt;r&lt;/span&gt; 箭头朝右
+
+&lt;p&gt;&lt;strong&gt;垂直流&lt;/strong&gt;&lt;/p&gt;
+&lt;span class="icon-play verticle-mode"&gt;r&lt;/span&gt; 箭头朝下</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>CSS：</h5>
+                    <pre name="code" class="css">@font-face {
+    font-family: Arrow;
+    src: url("arrow.eot?");
+    src: local("Any"),
+         url("arrow.woff") format("woff"),
+         url("arrow.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.icon-play {
+    font-family: Arrow;
+}
+
+.verticle-mode {
+    writing-mode: tb-rl;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+}</pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="footer">
+    <p>Designed &amp; Powered by <a href="http://www.zhangxinxu.com/" target="_blank">zhangxinxu</a></p>
+    <p><a href="../index.html" class="index">Demo索引地图</a> &emsp; <a href="http://bbs.cssworld.cn/">访问论坛</a></p>
+
+</div>
+<div class="ad_bottom"></div>
+<!-- 以下脚本是无关紧要 -->
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=57424410" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/js/all.js"></script>
+<script type="text/javascript">
+  DlHighlight.HELPERS.highlightByName("code", "pre");
+</script>
+</body>
+</html>

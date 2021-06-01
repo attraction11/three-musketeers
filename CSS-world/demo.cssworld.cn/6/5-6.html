@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="《CSS世界》实例演示之 “无依赖绝对定位”与超越常规布局的排版"/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content="张鑫旭, zhangxinxu"/>
+    <title>“无依赖绝对定位”与超越常规布局的排版 » 《CSS世界》演示页面</title>
+    <script>var _speedMark = new Date();</script>
+    <link rel="stylesheet" href="../common/css/demod647.css?0324">
+    <style>
+        .regist-box {
+            width: 346px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 30px 0;
+        }
+
+        .regist-group {
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .regist-label {
+            width: 70px;
+            padding-top: 10px;
+            float: left;
+        }
+
+        .regist-cell {
+            display: table-cell;
+            *display: inline-block;
+        }
+
+        .regist-input {
+            height: 20px;
+            line-height: 20px;
+            width: 260px;
+            padding: 9px 5px;
+            border: 1px solid #d0d6d9;
+            vertical-align: top;
+        }
+
+        .regist-input:focus {
+            border-color: #8DB2EB;
+            outline: none;
+        }
+
+        .regist-input:focus + .regist-remark,
+        .focus + .regist-remark {
+            visibility: visible;
+        }
+
+        .regist-btn {
+            display: block;
+            width: 160px;
+            line-height: 40px;
+            background-color: #be0000;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .regist-btn:hover {
+            background-color: #b00;
+        }
+
+        .icon-warn {
+            position: absolute;
+            margin-left: -18px;
+            width: 16px;
+            height: 20px;
+            background: url(../images/6/warn.gif) no-repeat center;
+        }
+
+        .regist-star {
+            position: absolute;
+            margin-left: -1em;
+            font-family: simsun;
+            color: #f30;
+        }
+
+        .regist-remark {
+            position: absolute;
+            margin: 10px 0 0 10px;
+            color: #666;
+            visibility: hidden;
+        }
+
+        .regist-warn {
+            padding-left: 16px;
+            color: #be0000;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <a href="../index.html" class="logo" title="回到demo首页"></a>
+    <!-- <a href="https://css.w3ctech.com/?cssworld.cn" target="_blank" class="mmbb" title="了解本次大会"></a>
+    <style>.mmbb{position: absolute;right:0; width: 560px; height: inherit;background:url(http://wx4.sinaimg.cn/mw690/4b4d632fgy1fpo5e8et0nj20fk01u74q.jpg) no-repeat right center; background-size: contain;}@media screen and (max-width: 640px) {.mmbb{width:calc(100vw - 160px);background-image:url(http://wx1.sinaimg.cn/mw690/4b4d632fgy1fpo5j7hc21j20g304e3zh.jpg);}}</style> -->
+</div>
+<div class="main">
+    <h1>“无依赖绝对定位”与超越常规布局的排版实例页面</h1>
+    <div class="show">
+        <h3>展示</h3>
+        <div class="go-bbs"><a href="http://bbs.cssworld.cn/" class="go-bbs">去论坛 &raquo;</a></div>
+        <div class="">
+
+            <div class="regist-box">
+                <div class="regist-group">
+                    <label class="regist-label"><span class="regist-star">*</span>邮箱</label>
+                    <div class="regist-cell">
+                        <input type="email" class="regist-input"><span class="regist-remark regist-warn">
+                            <i class="icon-warn"></i>邮箱格式不准确（示意）
+                        </span>
+                    </div>
+                </div>
+                <div class="regist-group">
+                    <label class="regist-label"><span class="regist-star">*</span>密码</label>
+                    <div class="regist-cell">
+                        <input type="password" class="regist-input"><span class="regist-remark">
+                            请输入6-16位密码，不能使用空格
+                        </span>
+                    </div>
+                </div>
+                <div class="regist-group">
+                    <label class="regist-label">手机号码</label>
+                    <div class="regist-cell">
+                        <input type="tel" class="regist-input">
+                    </div>
+                </div>
+                <div class="regist-group">
+                    <label class="regist-label"></label>
+                    <div class="regist-cell">
+                        <a href="javascript:" class="regist-btn">立即注册</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <h3>代码</h3>
+        <ul class="codes col2">
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>HTML：</h5>
+                    <pre name="code" class="html">&lt;div class="regist-box"&gt;
+    &lt;div class="regist-group"&gt;
+        &lt;label class="regist-label"&gt;&lt;span class="regist-star"&gt;*&lt;/span&gt;邮箱&lt;/label&gt;
+        &lt;div class="regist-cell"&gt;
+            &lt;input type="email" class="regist-input"&gt;&lt;span class="regist-remark regist-warn"&gt;
+                &lt;i class="icon-warn"&gt;&lt;/i&gt;邮箱格式不准确（示意）
+            &lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="regist-group"&gt;
+        &lt;label class="regist-label"&gt;&lt;span class="regist-star"&gt;*&lt;/span&gt;密码&lt;/label&gt;
+        &lt;div class="regist-cell"&gt;
+            &lt;input type="password" class="regist-input"&gt;&lt;span class="regist-remark"&gt;
+                请输入6-16位密码，不能使用空格
+            &lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="regist-group"&gt;
+        &lt;label class="regist-label"&gt;手机号码&lt;/label&gt;
+        &lt;div class="regist-cell"&gt;
+            &lt;input type="tel" class="regist-input"&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="regist-group"&gt;
+        &lt;i class="regist-label"&gt;&lt;/i&gt;
+        &lt;div class="regist-cell"&gt;
+            &lt;a href="javascript:" class="regist-btn"&gt;立即注册&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>核心CSS：</h5>
+                    <pre name="code" class="css">/* 容器宽度仅300多像素 */
+.regist-box {
+    width: 356px;
+    margin-left: auto; margin-right: auto;
+}
+/* 邮箱报错那里的警示小图标 */
+.regist-warn {
+    padding-left: 16px;
+    color: #be0000;
+}
+.icon-warn {
+    position: absolute;
+    margin-left: -18px;
+    width: 16px; height: 20px;
+    background: url(/images/6/warn.gif) no-repeat center;
+}
+/* 定位在盒子外部的红色星号 */
+.regist-star {
+    position: absolute;
+    margin-left: -1em;
+    font-family: simsun;
+    color: #f30;
+}
+/* 超出容器尺寸的提示信息 */
+.regist-remark {
+    position: absolute;
+    margin: 10px 0 0 10px;
+    color: #666;
+}</pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+  if (document.querySelector) {
+    var eleInputs = document.querySelectorAll('input');
+    for (var index = 0; index < eleInputs.length; index += 1) {
+      eleInputs[index].onfocus = function () {
+        if (/focus/.test(this.className) == false) {
+          this.className += ' focus';
+        }
+      };
+    }
+  }
+</script>
+
+
+<div class="footer">
+    <p>Designed &amp; Powered by <a href="http://www.zhangxinxu.com/" target="_blank">zhangxinxu</a></p>
+    <p><a href="../index.html" class="index">Demo索引地图</a> &emsp; <a href="http://bbs.cssworld.cn/">访问论坛</a></p>
+
+</div>
+<div class="ad_bottom"></div>
+<!-- 以下脚本是无关紧要 -->
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=57424410" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/js/all.js"></script>
+<script type="text/javascript">
+  DlHighlight.HELPERS.highlightByName("code", "pre");
+</script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="《CSS世界》实例演示之 两端对齐列表的间隙问题"/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content="张鑫旭, zhangxinxu"/>
+    <title>两端对齐列表的间隙问题 » 《CSS世界》演示页面</title>
+    <script>var _speedMark = new Date();</script>
+    <link rel="stylesheet" href="../common/css/demod647.css?0324">
+    <style>
+        .demo h4 {
+            max-width: 360px;
+            margin: 1em auto .5em;
+            text-align: left;
+        }
+
+        .box {
+            max-width: 360px;
+            margin: auto;
+            background: #f0f3f9;
+            text-align: justify;
+        }
+
+        .box img {
+            width: 96px;
+            height: 72px;
+        }
+
+        .justify-fix {
+            display: inline-block;
+            width: 96px;
+        }
+
+        /* 测试与示意 */
+        .box-1 .justify-fix,
+        .box-2 .justify-fix,
+        .box-3 .justify-fix,
+        .box-4 .justify-fix {
+            outline: 1px dashed red;
+        }
+
+        .box-2 {
+            line-height: 0;
+        }
+
+        .box-3 {
+            font-size: 0;
+        }
+
+        .box-4 {
+            line-height: 0;
+        }
+
+        .box span {
+            display: inline-block;
+            background: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <a href="../index.html" class="logo" title="回到demo首页"></a>
+    <!-- <a href="https://css.w3ctech.com/?cssworld.cn" target="_blank" class="mmbb" title="了解本次大会"></a>
+    <style>.mmbb{position: absolute;right:0; width: 560px; height: inherit;background:url(http://wx4.sinaimg.cn/mw690/4b4d632fgy1fpo5e8et0nj20fk01u74q.jpg) no-repeat right center; background-size: contain;}@media screen and (max-width: 640px) {.mmbb{width:calc(100vw - 160px);background-image:url(http://wx1.sinaimg.cn/mw690/4b4d632fgy1fpo5j7hc21j20g304e3zh.jpg);}}</style> -->
+</div>
+<div class="main">
+    <h1>两端对齐列表的间隙问题实例页面</h1>
+    <div class="show">
+        <h3>展示</h3>
+        <div class="go-bbs"><a href="http://bbs.cssworld.cn/" class="go-bbs">去论坛 &raquo;</a></div>
+        <div class="demo">
+
+            <h4>间隙示意：</h4>
+            <div class="box">
+                <img src="../images/common/m/1.jpg">
+                <img src="../images/common/m/1.jpg">
+                <img src="../images/common/m/1.jpg">
+                <img src="../images/common/m/1.jpg">
+                <i class="justify-fix"></i>
+                <i class="justify-fix"></i>
+                <i class="justify-fix"></i>
+            </div>
+            <h4>辅助空标签outline高亮：</h4>
+            <div class="box box-1">
+                <img src="../images/common/m/1.jpg">
+                <img src="../images/common/m/1.jpg">
+                <img src="../images/common/m/1.jpg">
+                <img src="../images/common/m/1.jpg">
+                <i class="justify-fix"></i>
+                <i class="justify-fix"></i>
+                <i class="justify-fix"></i>
+            </div>
+            <h4>容器line-height:0清除间隙：</h4>
+            <div class="box box-2">
+                <img src="../images/common/m/1.jpg">
+                <img src="../images/common/m/1.jpg">
+                <img src="../images/common/m/1.jpg">
+                <img src="../images/common/m/1.jpg">
+                <i class="justify-fix"></i>
+                <i class="justify-fix"></i>
+                <i class="justify-fix"></i>x-baseline
+            </div>
+            <h4>容器font-size:0清除间隙：</h4>
+            <div class="box box-3">
+                <img src="../images/common/m/1.jpg">
+                <img src="../images/common/m/1.jpg">
+                <img src="../images/common/m/1.jpg">
+                <img src="../images/common/m/1.jpg">
+                <i class="justify-fix"></i>
+                <i class="justify-fix"></i>
+                <i class="justify-fix"></i>
+            </div>
+            <h4>标签插入空格同时line-height:0：</h4>
+            <div class="box box-4">
+                <img src="../images/common/m/1.jpg">
+                <img src="../images/common/m/1.jpg">
+                <img src="../images/common/m/1.jpg">
+                <img src="../images/common/m/1.jpg">
+                <i class="justify-fix">&nbsp;</i>
+                <i class="justify-fix">&nbsp;</i>
+                <i class="justify-fix">&nbsp;</i>
+            </div>
+        </div>
+        <h3>代码</h3>
+        <ul class="codes col2">
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>HTML：</h5>
+                    <pre name="code" class="html">&lt;div class="box"&gt;
+    &lt;img src="1.jpg"&gt;
+    &lt;img src="1.jpg"&gt;
+    &lt;img src="1.jpg"&gt;
+    &lt;img src="1.jpg"&gt;
+    &lt;i class="justify-fix"&gt;&lt;/i&gt;
+    &lt;i class="justify-fix"&gt;&lt;/i&gt;
+    &lt;i class="justify-fix"&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;h4&gt;辅助空标签outline高亮：&lt;/h4&gt;
+&lt;div class="box box-1"&gt;
+    &lt;img src="1.jpg"&gt;
+    &lt;img src="1.jpg"&gt;
+    &lt;img src="1.jpg"&gt;
+    &lt;img src="1.jpg"&gt;
+    &lt;i class="justify-fix"&gt;&lt;/i&gt;
+    &lt;i class="justify-fix"&gt;&lt;/i&gt;
+    &lt;i class="justify-fix"&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;h4&gt;容器line-height:0清除间隙：&lt;/h4&gt;
+&lt;div class="box box-2"&gt;
+    &lt;img src="1.jpg"&gt;
+    &lt;img src="1.jpg"&gt;
+    &lt;img src="1.jpg"&gt;
+    &lt;img src="1.jpg"&gt;
+    &lt;i class="justify-fix"&gt;&lt;/i&gt;
+    &lt;i class="justify-fix"&gt;&lt;/i&gt;
+    &lt;i class="justify-fix"&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;h4&gt;容器font-size:0清除间隙：&lt;/h4&gt;
+&lt;div class="box box-3"&gt;
+    &lt;img src="1.jpg"&gt;
+    &lt;img src="1.jpg"&gt;
+    &lt;img src="1.jpg"&gt;
+    &lt;img src="1.jpg"&gt;
+    &lt;i class="justify-fix"&gt;&lt;/i&gt;
+    &lt;i class="justify-fix"&gt;&lt;/i&gt;
+    &lt;i class="justify-fix"&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;h4&gt;标签插入空格同时line-height:0：&lt;/h4&gt;
+&lt;div class="box box-4"&gt;
+    &lt;img src="1.jpg"&gt;
+    &lt;img src="1.jpg"&gt;
+    &lt;img src="1.jpg"&gt;
+    &lt;img src="1.jpg"&gt;
+    &lt;i class="justify-fix"&gt;&amp;nbsp;&lt;/i&gt;
+    &lt;i class="justify-fix"&gt;&amp;nbsp;&lt;/i&gt;
+    &lt;i class="justify-fix"&gt;&amp;nbsp;&lt;/i&gt;
+&lt;/div&gt;</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>CSS：</h5>
+                    <pre name="code" class="css">.box {
+    max-width: 360px;
+    background-color: #f0f3f9;
+    text-align: justify;
+}
+.box img {
+    width: 96px; height: 72px;
+}
+
+.justify-fix {
+    display: inline-block;
+    width: 96px;
+}
+
+/* 测试与示意 */
+.box-1 .justify-fix,
+.box-2 .justify-fix,
+.box-3 .justify-fix,
+.box-4 .justify-fix {
+    outline: 1px dashed red;
+}
+.box-2 {
+    line-height: 0;
+}
+.box-3 {
+    font-size: 0;
+}
+.box-4 {
+    /* 此处对应HTML中的&amp;nbsp;很关键 */
+    line-height: 0;
+}</pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="footer">
+    <p>Designed &amp; Powered by <a href="http://www.zhangxinxu.com/" target="_blank">zhangxinxu</a></p>
+    <p><a href="../index.html" class="index">Demo索引地图</a> &emsp; <a href="http://bbs.cssworld.cn/">访问论坛</a></p>
+
+</div>
+<div class="ad_bottom"></div>
+<!-- 以下脚本是无关紧要 -->
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=57424410" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/js/all.js"></script>
+<script type="text/javascript">
+  DlHighlight.HELPERS.highlightByName("code", "pre");
+</script>
+</body>
+</html>

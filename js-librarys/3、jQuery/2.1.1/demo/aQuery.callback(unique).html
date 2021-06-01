@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+  function Callbacks(options) {
+    var list = [];
+    var self;
+    var firingStart;
+    var memory;
+
+    function _fire(data) {
+      memory = options === 'memory' && data;
+      var firingIndex = firingStart || 0;
+      firingStart = 0;
+      var firingLength = list.length;
+      for (; list && firingIndex < firingLength; firingIndex++) {
+        list[firingIndex](data)
+      }
+    }
+
+    self = {
+      add: function(fn) {
+        var start = list.length;
+        if (options == 'unique') {
+          if (-1 === list.indexOf(fn)) {
+            list.push(fn)
+          }
+        } else {
+          list.push(fn)
+        }
+        if (memory) {
+          firingStart = start; //获取最后一值
+          _fire(memory);
+        }
+      },
+      fire: function(args) {
+        if (list) {
+          _fire(args)
+        }
+      }
+    }
+    return self;
+  }
+</script>
+</body>
+</html>

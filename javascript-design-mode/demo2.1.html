@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>面对对象编程</title>
+</head>
+
+<body>
+<script>
+    /* 1、面对对象编程就是将你的需求抽象成一个对象，然后针对这个对象分析其特征（属性）和动作（方法）
+    var Book = function (id, name, price) {
+
+        // 判断执行过程中的this是否是当前的对象（如果是说明是通过new创建的）
+        if (this instanceof Book) {
+            // 私有变量
+            var num = 1
+
+            // 私有方法
+            function checkId(id) {
+                return id ? true : false
+            }
+
+            // 特权方法
+            this.getName = function () {
+                return this.name
+            }
+
+            this.getPrice = function () {
+                return this.price
+            }
+
+            this.setName = function (name) {
+                this.name = name;
+                return this
+            }
+
+            this.setPrice = function (price) {
+                this.price = price;
+                return this
+            }
+
+            // 对象公有属性
+            this.id = id;
+            this.name = void(0);
+            this.price = void(0);
+            // 对象公有方法
+            this.copy = function () {
+            };
+
+            // 构造器
+            this.setName(name)
+            this.setPrice(price)
+            // 否则需要重新创建这个对象
+        } else {
+            return new Book(id, name, price)
+        }
+    }
+
+    // 类静态公有属性
+    Book.isChinese = true
+    // 类静态公有方法
+    Book.resetTime = function () {
+        console.log('new time')
+    }
+    Book.prototype = {
+        // 静态公有属性
+        isJSBook: false,
+        // 静态公有方法
+        display: function () {}
+    }
+
+    // 实例化对象
+    var b = Book(11, 'JavaScript设计模式', 50);
+
+    console.log(b);  // undefined
+    console.log(b.id);
+    console.log(b.setName('少有人走的路'));
+    console.log(b.getName());
+    console.log(b.isJSBook);
+    console.log(Book.isChinese);*/
+
+
+    /*2、 将类的静态变量通过闭包实现
+    var Book = (function() {
+        // 静态私有变量
+        var bookNum = 0;
+        // 静态私有方法
+        function checkBook(name) {}
+        // 返回结构函数
+        return function(newId, newName, newPrice) {
+            // 私有变量
+            var name, price;
+            // 私有方法
+            function checkID(id) {}
+            // 特权方法
+            this.getName = function () {
+                return this.name
+            }
+            this.getPrice = function () {
+                return this.price
+            }
+            this.setName = function (name) {
+                this.name = name
+                return this
+            }
+            this.setPrice = function (price) {
+                this.price = price
+                return this
+            }
+            // 公有属性
+            this.id = newId
+            this.name = void(0)
+            this.price = void(0)
+            // 公有方法
+            this.copy = function () {}
+            if (bookNum > 100) {
+                throw new Error
+            }
+            // 构造器
+            this.setName(name)
+            this.setPrice(price)
+        }
+    }) ();
+
+    Book.prototype = {
+        // 静态公有属性
+        isJSBook: false,
+        // 静态公有方法
+        display: function () {}
+    }
+
+    // 实例化对象
+    var b = new Book(11, 'JavaScript设计模式', 50)
+
+    console.log(b.bookNum)  // undefined
+    console.log(b.id)
+    console.log(b.setName('少有人走的路'))
+    console.log(b.getName())
+    console.log(b.isJSBook)*/
+
+
+    /*3、 将类的静态变量通过闭包实现 */
+    var Book = (function () {
+        // 静态私有变量
+        var bookNum = 0;
+
+        // 静态私有方法
+        function checkBook(name) {}
+
+        // 返回结构函数
+        function _book(newId, newName, newPrice) {
+            // 私有变量
+            var name, price;
+
+            // 私有方法
+            function checkID(id) {}
+
+            // 公有属性
+            this.id = newId
+            this.name = void(0)
+            this.price = void(0)
+
+            // 公有方法
+            this.copy = function () {}
+
+            // 特权方法
+            this.getName = function () {
+                return this.name
+            }
+            this.getPrice = function () {
+                return this.price
+            }
+            this.setName = function (name) {
+                this.name = name
+                return this
+            }
+            this.setPrice = function (price) {
+                this.price = price
+                return this
+            }
+            // 构造器
+            this.setName(name)
+            this.setPrice(price)
+
+            if (bookNum > 100) {
+                throw new Error
+            }
+        }
+
+        console.log(_book)
+        _book.prototype = {
+            // 静态公有属性
+            isJSBook: false,
+            // 静态公有方法
+            display: function () {}
+        };
+
+        // 返回类
+        return _book;
+    })();
+
+    // 实例化对象
+    var b = new Book(11, 'JavaScript设计模式', 50)
+
+    console.log(b.bookNum)  // undefined
+    console.log(b.id)
+    console.log(b.setName('少有人走的路'))
+    console.log(b.getName())
+    console.log(b.isJSBook)
+
+
+</script>
+</body>
+
+</html>

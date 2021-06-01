@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>通讯卫星--观察者模式</title>
+</head>
+
+<body>
+    <!-- 观察者创建出来之后，它有一个消息盒子和三个方法，分别是订阅消息的方法、取消订阅消息的方法、发布订阅消息的的方法 -->
+    <script>
+        // 将观察者放在闭包中，页面加载后立即执行
+        var Observer = (function(){
+            // 防止消息队列暴露而被修改，故将消息容器作为静态私有变量保存
+            var __messages = {};
+            return {
+                // 注册信息接口
+                regist: function (type, fn) {
+                    // 如果此消息不存在，则应该创建一个该消息类型
+                    if (typeof __messages[type] === 'undefined') {
+                        // 将动作推入到该消息对应的动作执行队列中
+                        __messages[type] = [fn]
+                    } else {
+                        // 将动作方法推入到该消息对应的动作执行队列中
+                        __messages[type].push(fn)
+                    }
+                },
+                // 发布信息接口
+                // 功能是当观察者发布一个消息的时候，将所有订阅者订阅的消息执行
+                fire: function (type, args) {
+                    // 如果该消息没被注册,则返回
+                    if (__messages[type]) {
+                        return;
+                    }
+                    // 定义消息信息(包括消息类型以及携带的数据)
+                    var events = {
+                        type: type,
+                        args: args || {}
+                    },
+                        i = 0,
+                        len = __messages[type].length;
+                    // 遍历消息动作
+                    for (; i < len; i++) {
+                        // 依次执行注册的消息对应的动作序列
+                        __messages[type][i].call(this, events)
+                    }
+                },
+                // 移除信息接口
+                // 功能是将订阅者注销的消息从消息队列中清除
+                remove: function (type, fn) {
+                    // 如果消息动作在队列中已经存在
+                    if (__messages[type] instanceof Array) {
+                        // 从最后一个消息动作遍历
+                        var i = __messages[type].length -1;
+                        for (; i >= 0; i--) {
+                            // 如果存在该动作则在消息动作序列中移除相应的动作
+                            __messages[type][i] === fn && __messages[type].splice(i, 1);
+                        }
+                    }
+                }
+            }
+        })();
+
+        Observer.regist('test', function (e) {
+            console.log(e.type, e.args.msg)
+        });
+
+        Observer.fire('test', {msg: '传递参数'})
+    </script>
+</body>
+
+</html>

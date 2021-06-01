@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="《CSS世界》实例演示之 “无依赖绝对定位”与下拉列表定位"/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content="张鑫旭, zhangxinxu"/>
+    <title>“无依赖绝对定位”与下拉列表定位 » 《CSS世界》演示页面</title>
+    <script>var _speedMark = new Date();</script>
+    <link rel="stylesheet" href="../common/css/demod647.css?0324">
+    <style>
+        .search-box {
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .search-input {
+            width: 200px;
+            height: 20px;
+            line-height: 20px;
+            margin: 0;
+            padding: 9px 39px 9px 9px;
+            border: 1px solid #ddd;
+            transition: border-color .15s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #2ea7e0;
+        }
+
+        .search-btn {
+            width: 20px;
+            height: 20px;
+            border: 9px solid #fff;
+            background: #ddd url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAPdJREFUeNpi+k9lwMRAZYDLwCNAHAnEMkDMDqUjoeL4AZqLfwNxFhAz4MEg+V+4vIxuYApUjBOIG4H4DhD/hNKNUHEGqDqCBh6B8rmA+CgO9Ueh8gxQ9XgjZSqUrgBiKxwhBBIvg7KnEApDcajNdwikjLtQdVKEXPgSSssSiEcZKP2KULIRh9KPCRj4FEqLEjLQEUovJ2DgYihtRygMD5MYy4eJSYfZRKZDEE4C4n+EDPxFRE5hwGcoAw6vgbwTAU0azFA6BohPQQ3BaSgDGSXUXyyG5lNiIDZDhWESLBQUe7OBmA+IFwBxMUyCEexMOhSwZAOAAAMAVJM+EQ2rrOoAAAAASUVORK5CYII=) no-repeat center;
+            text-indent: -9em;
+            position: absolute;
+            margin: 1px 0 0 -40px;
+            transition: background-color .15s;
+            overflow: hidden;
+        }
+
+        .search-input:focus ~ .search-btn {
+            background-color: #2ea7e0;
+        }
+
+        .search-datalist {
+            position: absolute;
+            width: 248px;
+            border: 1px solid #e6e8e9;
+            background-color: #fff;
+            box-shadow: 0px 1px 2px #d5d7d8;
+            text-align: left;
+            z-index: 1;
+        }
+
+        .search-datalist a {
+            display: block;
+            line-height: 36px;
+            padding-left: 12px;
+            color: #5e5e5e;
+            text-decoration: none;
+        }
+
+        .search-datalist a:hover {
+            color: #000;
+            background-color: #f9f9f9;
+        }
+
+        .search-result {
+            display: none;
+        }
+
+        .search-input:focus ~ .search-result {
+            display: block;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <a href="../index.html" class="logo" title="回到demo首页"></a>
+    <!-- <a href="https://css.w3ctech.com/?cssworld.cn" target="_blank" class="mmbb" title="了解本次大会"></a>
+    <style>.mmbb{position: absolute;right:0; width: 560px; height: inherit;background:url(http://wx4.sinaimg.cn/mw690/4b4d632fgy1fpo5e8et0nj20fk01u74q.jpg) no-repeat right center; background-size: contain;}@media screen and (max-width: 640px) {.mmbb{width:calc(100vw - 160px);background-image:url(http://wx1.sinaimg.cn/mw690/4b4d632fgy1fpo5j7hc21j20g304e3zh.jpg);}}</style> -->
+</div>
+<div class="main">
+    <h1>“无依赖绝对定位”与下拉列表定位实例页面</h1>
+    <div class="show">
+        <h3>展示</h3>
+        <div class="go-bbs"><a href="http://bbs.cssworld.cn/" class="go-bbs">去论坛 &raquo;</a></div>
+        <div class="demo">
+
+            <div class="search-box">
+                <input class="search-input" placeholder="搜索"><a href="javascript:" class="search-btn">搜索</a>
+                <div class="search-result">
+                    <div class="search-datalist">
+                        <a href>搜索结果1</a>
+                        <a href>搜索结果2</a>
+                        <a href>搜索结果3</a>
+                        <a href>搜索结果4</a>
+                        <a href>搜索结果5</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3>代码</h3>
+        <ul class="codes col2">
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>HTML：</h5>
+                    <pre name="code" class="html">&lt;div class="search-box"&gt;
+    &lt;input class="search-input" placeholder="搜索"&gt;&lt;a href="javascript:" class="search-btn"&gt;搜索&lt;/a&gt;
+    &lt;div class="search-result"&gt;
+        &lt;div class="search-datalist"&gt;
+            &lt;a href&gt;搜索结果1&lt;/a&gt;
+            &lt;a href&gt;搜索结果2&lt;/a&gt;
+            &lt;a href&gt;搜索结果3&lt;/a&gt;
+            &lt;a href&gt;搜索结果4&lt;/a&gt;
+            &lt;a href&gt;搜索结果5&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>核心CSS：</h5>
+                    <pre name="code" class="css">
+.search-input {
+    width: 200px; height: 20px;
+    line-height: 20px;
+    padding: 9px 39px 9px 9px;
+    border: 1px solid #ddd;
+}
+/* 搜索按钮的无依赖绝对定位 */
+.search-btn {
+    width: 20px; height: 20px;
+    border: 9px solid #fff;
+    background: #ddd url(search.png) no-repeat center;
+    position: absolute; margin: 1px 0 0 -40px;
+}
+/* 下拉列表的无依赖绝对定位 */
+.search-datalist {
+    position: absolute;
+    width: 248px;
+    border: 1px solid #e6e8e9;
+    background-color: #fff;
+}
+
+/* 搜索列表的显隐控制 */
+.search-result {
+    display: none;
+}
+.search-input:focus ~ .search-result {
+    display: block;
+}</pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="footer">
+    <p>Designed &amp; Powered by <a href="http://www.zhangxinxu.com/" target="_blank">zhangxinxu</a></p>
+    <p><a href="../index.html" class="index">Demo索引地图</a> &emsp; <a href="http://bbs.cssworld.cn/">访问论坛</a></p>
+
+</div>
+<div class="ad_bottom"></div>
+<!-- 以下脚本是无关紧要 -->
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=57424410" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/js/all.js"></script>
+<script type="text/javascript">
+  DlHighlight.HELPERS.highlightByName("code", "pre");
+</script>
+</body>
+</html>

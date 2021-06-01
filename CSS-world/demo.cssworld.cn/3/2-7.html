@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="《CSS世界》实例演示之 “最大宽度”与iScroll水平滚动"/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content="张鑫旭, zhangxinxu"/>
+    <title>“最大宽度”与iScroll水平滚动 » 《CSS世界》演示页面</title>
+    <script>var _speedMark = new Date();</script>
+    <link rel="stylesheet" href="../common/css/demod647.css?0324">
+    <style>
+        .wrap {
+            width: 300px;
+            height: 200px;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wrap > ul {
+            position: absolute;
+            padding: 0;
+            white-space: nowrap;
+        }
+
+        .wrap li {
+            display: inline-block;
+        }
+
+        .wrap li::before {
+            content: attr(data-index);
+            position: absolute;
+            margin: 5px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, .5);
+            width: 22px;
+            height: 22px;
+            line-height: 22px;
+            text-align: center;
+            color: #fff;
+            font-size: 12px;
+        }
+
+        .model {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <a href="../index.html" class="logo" title="回到demo首页"></a>
+    <!-- <a href="https://css.w3ctech.com/?cssworld.cn" target="_blank" class="mmbb" title="了解本次大会"></a>
+    <style>.mmbb{position: absolute;right:0; width: 560px; height: inherit;background:url(http://wx4.sinaimg.cn/mw690/4b4d632fgy1fpo5e8et0nj20fk01u74q.jpg) no-repeat right center; background-size: contain;}@media screen and (max-width: 640px) {.mmbb{width:calc(100vw - 160px);background-image:url(http://wx1.sinaimg.cn/mw690/4b4d632fgy1fpo5j7hc21j20g304e3zh.jpg);}}</style> -->
+</div>
+<div class="main">
+    <h1>“最大宽度”与iScroll水平滚动实例页面</h1>
+    <div class="show">
+        <h3>展示</h3>
+        <div class="go-bbs"><a href="http://bbs.cssworld.cn/" class="go-bbs">去论坛 &raquo;</a></div>
+        <div class="demo">
+
+            <div id="wrap" class="wrap">
+                <ul>
+                    <li data-index="1"><img src="../images/common/l/1.jpg" width="256" height="192"></li>
+                    <li data-index="2"><img src="../images/common/l/1.jpg" width="256" height="192"></li>
+                    <li data-index="3"><img src="../images/common/l/1.jpg" width="256" height="192"></li>
+                    <li data-index="4"><img src="../images/common/l/1.jpg" width="256" height="192"></li>
+                    <li data-index="5"><img src="../images/common/l/1.jpg" width="256" height="192"></li>
+                </ul>
+            </div>
+            <p class="model">@LING晨十二点</p>
+        </div>
+        <h3>代码</h3>
+        <ul class="codes col3">
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>HTML：</h5>
+                    <pre name="code" class="html">&lt;div id="wrap" class="wrap"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;img src="1.jpg"&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;img src="1.jpg"&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;img src="1.jpg"&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;img src="1.jpg"&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;img src="1.jpg"&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>CSS：</h5>
+                    <pre name="code" class="css">.wrap {
+  width: 300px; height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+.wrap > ul {
+  position: absolute;
+  white-space: nowrap;
+}
+.wrap li {
+  display: inline-block;
+}</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>JS：</h5>
+                    <pre name="code" class="js">new IScroll('#wrap', {
+  scrollbars: true,
+  scrollX: true,
+  scrollY: false
+});</pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script src="../js/3/iscroll.js"></script>
+<script>
+  new IScroll('#wrap', {
+    scrollbars: true,
+    scrollX: true,
+    scrollY: false
+  });
+</script>
+
+
+<div class="footer">
+    <p>Designed &amp; Powered by <a href="http://www.zhangxinxu.com/" target="_blank">zhangxinxu</a></p>
+    <p><a href="../index.html" class="index">Demo索引地图</a> &emsp; <a href="http://bbs.cssworld.cn/">访问论坛</a></p>
+
+</div>
+<div class="ad_bottom"></div>
+<!-- 以下脚本是无关紧要 -->
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=57424410" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/js/all.js"></script>
+<script type="text/javascript">
+  DlHighlight.HELPERS.highlightByName("code", "pre");
+</script>
+</body>
+</html>

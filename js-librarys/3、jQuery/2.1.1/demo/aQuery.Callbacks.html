@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="aaron"></div>
+<script type="text/javascript">
+
+  function Callbacks() {
+    var list = [];
+    var self;
+    self = {
+      add: function(fn) {
+        list.push(fn)
+      },
+      fire: function(args) {
+        list.forEach(function(fn) {
+          fn(args);
+        })
+      }
+    }
+    return self;
+  }
+
+  function fn1(val) {
+    show('fn1 says:' + val);
+  }
+  function fn2(val) {
+    show('fn2 says ' + val);
+  }
+
+  var cbs = Callbacks();
+  cbs.add(fn1);
+  cbs.fire('foo');
+  cbs.add(fn2);
+  cbs.fire('bar')
+
+
+</script>
+</body>
+</html>

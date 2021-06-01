@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="《CSS世界》实例演示之 vertical-align:middle近似垂直居中原理示意"/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content="张鑫旭, zhangxinxu"/>
+    <title>vertical-align:middle近似垂直居中原理示意 » 《CSS世界》演示页面</title>
+    <script>var _speedMark = new Date();</script>
+    <link rel="stylesheet" href="../common/css/demod647.css?0324">
+    <style>
+        .box {
+            width: 280px;
+            line-height: 128px;
+            margin: auto;
+            background-color: #f0f3f9;
+            font-size: 16px;
+            position: relative;
+        }
+
+        .box img {
+            height: 96px;
+            vertical-align: middle;
+        }
+
+        .wrap {
+            display: inline-block;
+            line-height: 0;
+            color: red;
+            position: relative;
+        }
+
+        .wrap:before,
+        .box:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            border-top: 1px solid;
+        }
+
+        .box:after {
+            color: green;
+        }
+
+        .dt {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .range {
+            width: 160px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <a href="../index.html" class="logo" title="回到demo首页"></a>
+    <!-- <a href="https://css.w3ctech.com/?cssworld.cn" target="_blank" class="mmbb" title="了解本次大会"></a>
+    <style>.mmbb{position: absolute;right:0; width: 560px; height: inherit;background:url(http://wx4.sinaimg.cn/mw690/4b4d632fgy1fpo5e8et0nj20fk01u74q.jpg) no-repeat right center; background-size: contain;}@media screen and (max-width: 640px) {.mmbb{width:calc(100vw - 160px);background-image:url(http://wx1.sinaimg.cn/mw690/4b4d632fgy1fpo5j7hc21j20g304e3zh.jpg);}}</style> -->
+</div>
+<div class="main">
+    <h1>vertical-align:middle近似垂直居中原理示意实例页面</h1>
+    <div class="show">
+        <h3>展示</h3>
+        <div class="go-bbs"><a href="http://bbs.cssworld.cn/" class="go-bbs">去论坛 &raquo;</a></div>
+        <div class="demo">
+
+            <div id="box" class="box">
+                <span class="wrap"><img src="../images/common/m/1.jpg"></span>x
+            </div>
+            <p>
+                <span class="dt">修改font-size:<br>(16px-48px)</span> <input type="range" id="range" class="range"
+                                                                           min="16" max="48" value="16">
+            </p>
+        </div>
+        <h3>代码</h3>
+        <ul class="codes col2">
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>HTML：</h5>
+                    <pre name="code" class="html">&lt;div class="box"&gt;
+    &lt;img src="1.jpg"&gt;x
+&lt;/div&gt;</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>CSS：</h5>
+                    <pre name="code" class="css">.box {
+    width: 280px;
+    line-height: 128px;
+    background-color: #f0f3f9;
+    font-size: 16px;
+}
+.box img {
+    height: 96px;
+    vertical-align: middle;
+}</pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+  var eleRange = document.getElementById('range'),
+    eleBox = document.getElementById('box');
+
+  if (eleRange && eleBox) {
+    eleRange.onchange = function () {
+      eleBox.style.fontSize = this.value + 'px';
+    };
+  }
+</script>
+
+
+<div class="footer">
+    <p>Designed &amp; Powered by <a href="http://www.zhangxinxu.com/" target="_blank">zhangxinxu</a></p>
+    <p><a href="../index.html" class="index">Demo索引地图</a> &emsp; <a href="http://bbs.cssworld.cn/">访问论坛</a></p>
+
+</div>
+<div class="ad_bottom"></div>
+<!-- 以下脚本是无关紧要 -->
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=57424410" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/js/all.js"></script>
+<script type="text/javascript">
+  DlHighlight.HELPERS.highlightByName("code", "pre");
+</script>
+</body>
+</html>

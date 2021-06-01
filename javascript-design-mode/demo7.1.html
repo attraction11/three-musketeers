@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>语言之魂-原型模式</title>
+</head>
+
+<body>
+    <script>
+        // 图片轮播类
+        var LoopImages = function (imgArr, container) {
+            this.imagesArray = imgArr;
+            this.container = container;
+
+        }
+        LoopImages.prototype = {
+            // 创建轮播图片
+            createImage: function () {
+                console.log('LoopImages createImage function')
+            },
+            // 切换下一张图片
+            changeImage: function () {
+                console.log('LoopImages changeImage function')
+            }
+        }
+
+        // 上下滑动切换类
+        var SlideLoopImg = function (imgArr, container) {
+            // 构造函数继承图片轮播类
+            LoopImages.call(this, imgArr, container);
+
+        }
+        SlideLoopImg.prototype = new LoopImages();
+        // 重写继承的切换下一张图片方法
+        SlideLoopImg.prototype.changeImage = function () {
+            console.log('SlideLoopImg changeImage function')
+        }
+
+        // 渐隐切换类
+        var FadeLoopImg = function (imgArr, container, arrow) {
+            // 构造函数继承图片轮播类
+            LoopImages.call(this, imgArr, container);
+            this.arrow = arrow;            
+        }
+        FadeLoopImg.prototype = new LoopImages();
+        // 重写继承的切换下一张图片方法
+        FadeLoopImg.prototype.changeImage = function () {
+            console.log('FadeLoopImg changeImage function')
+        }
+
+        // 测试用例渐隐切换图片类
+        var fadeImg = new FadeLoopImg([
+            '01.jpg',
+            '02.jpg',
+            '03.jpg',
+            '04.jpg',
+        ], 'slide', [
+            'left.jpg',
+            'right.jpg',
+        ])
+        console.log(fadeImg.container)
+        fadeImg.changeImage();
+    </script>
+</body>
+
+</html>

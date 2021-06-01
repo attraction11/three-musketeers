@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>活诸葛--策略模式</title>
+</head>
+<!--策略模式：
+    1、封装了一组代码簇，相互独立，提高了算法的复用率
+    2、有利于算法的演化
+    3、同状态模式一样，策略模式也是一种优化分支判断语句的模式
+-->
+<body>
+    <script>
+        // 价格策略对象
+        var PriceStrategy = function () {
+            // 内部算法对象
+            var stragtegy = {
+                // 100 返 30
+                return30: function (price) {
+                    // +price 转化为数字类型
+                    return + price + parseInt(price / 100) * 30;
+                },
+                // 100 返 50
+                return50: function (price) {
+                    // +price 转化为数字类型
+                    return + price + parseInt(price / 100) * 50;
+                },
+                // 9折
+                percent90: function (price) {
+                    // JavaScript 在处理小数乘除法有bug,故运算前转化为整数
+                    return +price * 100 * 90 / 10000;
+                },
+                // 8折
+                percent80: function (price) {
+                    return +price * 100 * 80 / 10000;
+                },
+                // 5折
+                percent50: function (price) {
+                    return +price * 100 * 50 / 10000;
+                },
+            };
+            // 策略算法调用接口
+            return {
+                algorithm : function (way, price){
+                    // 如果算法存在，则调用算法，否则返回false
+                    return stragtegy[way] && stragtegy[way](price)
+                },
+                // 添加策略
+                addStrategy : function (way, fn){
+                    // 如果算法存在，则调用算法，否则返回false
+                    stragtegy[way] = fn
+                }
+
+            }
+        }();
+
+        // 扩展添加策略算法
+        PriceStrategy.addStrategy('return20', function (price) {
+            // +price 转化为数字类型
+            return + price + parseInt(price / 100) * 20;
+        });
+
+        var price = PriceStrategy.algorithm('return20', '314.67');
+        console.log(price)
+    </script>
+</body>
+
+</html>

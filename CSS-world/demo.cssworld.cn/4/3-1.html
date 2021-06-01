@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="《CSS世界》实例演示之 margin与一栏定宽的两栏自适应布局"/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content="张鑫旭, zhangxinxu"/>
+    <title>margin与一栏定宽的两栏自适应布局 » 《CSS世界》演示页面</title>
+    <script>var _speedMark = new Date();</script>
+    <link rel="stylesheet" href="../common/css/demod647.css?0324">
+    <style>
+        .container {
+            width: 300px;
+            margin: auto;
+            text-align: left;
+            animation: width 3s infinite alternate;
+        }
+
+        @keyframes width {
+            from {
+                width: 300px;
+            }
+            to {
+                width: 260px;
+            }
+        }
+
+        .demo p {
+            margin: 0;
+        }
+
+        .box {
+            min-height: 100px;
+            overflow: hidden;
+        }
+
+        .img {
+            width: 128px;
+            height: 96px;
+        }
+
+        .box-left > img {
+            float: left;
+        }
+
+        .box-left > p {
+            margin-left: 140px;
+        }
+
+        .box-right > img {
+            float: right;
+        }
+
+        .box-right > p {
+            margin-right: 140px;
+        }
+
+        .box-right-same > .full {
+            width: 100%;
+            float: left;
+        }
+
+        .box-right-same > .full > p {
+            margin-right: 140px;
+        }
+
+        .box-right-same > img {
+            float: left;
+            margin-left: -128px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <a href="../index.html" class="logo" title="回到demo首页"></a>
+    <!-- <a href="https://css.w3ctech.com/?cssworld.cn" target="_blank" class="mmbb" title="了解本次大会"></a>
+    <style>.mmbb{position: absolute;right:0; width: 560px; height: inherit;background:url(http://wx4.sinaimg.cn/mw690/4b4d632fgy1fpo5e8et0nj20fk01u74q.jpg) no-repeat right center; background-size: contain;}@media screen and (max-width: 640px) {.mmbb{width:calc(100vw - 160px);background-image:url(http://wx1.sinaimg.cn/mw690/4b4d632fgy1fpo5j7hc21j20g304e3zh.jpg);}}</style> -->
+</div>
+<div class="main">
+    <h1>margin与一栏定宽的两栏自适应布局实例页面</h1>
+    <div class="show">
+        <h3>展示</h3>
+        <div class="go-bbs"><a href="http://bbs.cssworld.cn/" class="go-bbs">去论坛 &raquo;</a></div>
+        <div class="demo">
+
+            <div class="container">
+                <h4>左侧固定</h4>
+                <div class="box box-left">
+                    <img src="../images/common/m/1.jpg" class="img">
+                    <p>DOM文档流中，图片定宽在左侧，文字内容在右侧，和视觉呈现的前后顺序一致。</p>
+                </div>
+                <h4>右侧固定-DOM顺序相反</h4>
+                <div class="box box-right">
+                    <img src="../images/common/m/1.jpg" class="img">
+                    <p>DOM文档流中，图片定宽在左侧，视觉上却在右侧，顺序表现不一致。</p>
+                </div>
+
+                <h4>右侧固定-DOM顺序和视觉一致</h4>
+                <div class="box box-right-same">
+                    <div class="full">
+                        <p>DOM文档流中，图片定宽在右侧，视觉呈现也在右侧，顺便表现此时一致。</p>
+                    </div>
+                    <img src="../images/common/m/1.jpg" class="img">
+                </div>
+            </div>
+        </div>
+        <h3>代码</h3>
+        <ul class="codes col2">
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>HTML：</h5>
+                    <pre name="code" class="html">&lt;h4&gt;左侧固定&lt;/h4&gt;
+&lt;div class="box box-left"&gt;
+    &lt;img src="1.jpg" class="img"&gt;
+    &lt;p&gt;DOM文档流中，图片定宽在左侧，文字内容在右侧，和视觉呈现的前后顺序一致。&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h4&gt;右侧固定-DOM顺序相反&lt;/h4&gt;
+&lt;div class="box box-right"&gt;
+    &lt;img src="1.jpg" class="img"&gt;
+    &lt;p&gt;DOM文档流中，图片定宽在左侧，视觉上却在右侧，顺序表现不一致。&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h4&gt;右侧固定-DOM顺序和视觉一致&lt;/h4&gt;
+&lt;div class="box box-right-same"&gt;
+    &lt;div class="full"&gt;
+        &lt;p&gt;DOM文档流中，图片定宽在右侧，视觉呈现也在右侧，顺便表现此时一致。&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;img src="1.jpg" class="img"&gt;
+&lt;/div&gt;</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>CSS：</h5>
+                    <pre name="code" class="css">.box {
+    overflow: hidden;
+}
+.img {
+    width: 128px; height: 96px;
+}
+/* 左浮动 */
+.box-left &gt; img {
+    float: left;
+}
+.box-left &gt; p {
+    margin-left: 140px;
+}
+/* 右浮动，但图片DOM在前 */
+.box-right &gt; img {
+    float: right;
+}
+.box-right &gt; p {
+    margin-right: 140px;
+}
+/* 右浮动，图片DOM在后，和视觉表现一致 */
+.box-right-same &gt; .full {
+    width: 100%;
+    float: left;
+}
+.box-right-same &gt; .full &gt; p {
+    margin-right: 140px;
+}
+.box-right-same &gt; img {
+    float: left;
+    margin-left: -128px;
+}</pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="footer">
+    <p>Designed &amp; Powered by <a href="http://www.zhangxinxu.com/" target="_blank">zhangxinxu</a></p>
+    <p><a href="../index.html" class="index">Demo索引地图</a> &emsp; <a href="http://bbs.cssworld.cn/">访问论坛</a></p>
+
+</div>
+<div class="ad_bottom"></div>
+<!-- 以下脚本是无关紧要 -->
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=57424410" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/js/all.js"></script>
+<script type="text/javascript">
+  DlHighlight.HELPERS.highlightByName("code", "pre");
+</script>
+</body>
+</html>

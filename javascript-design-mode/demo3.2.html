@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>工厂模式的两种场景</title>
+</head>
+
+<body>
+    <script>
+        function createBook(name, time, type) {
+            // 创建一个对象，并对对象拓展属性和方法
+            var o = new Object();
+            o.name = name
+            o.time = time
+            o.type = type
+            o.getName = function() {
+                console.log(this.name)
+            }
+            // 将对象返回
+            return o;
+        }
+        var book1 = new createBook('js', '2018', 'js--')
+        var book2 = new createBook('css', '2018', 'css--')
+        book1.getName()
+        book2.getName()
+    </script>
+</body>
+
+</html>

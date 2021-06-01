@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="《CSS世界》实例演示之 relative定位和margin定位对比"/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content="张鑫旭, zhangxinxu"/>
+    <title>relative定位和margin定位对比 » 《CSS世界》演示页面</title>
+    <script>var _speedMark = new Date();</script>
+    <link rel="stylesheet" href="../common/css/demod647.css?0324">
+    <style>
+        .table {
+            width: 100%;
+            max-width: 300px;
+            display: inline-table;
+            table-layout: fixed;
+        }
+
+        .td {
+            display: table-cell;
+        }
+
+        .td img {
+            width: 128px;
+            height: 96px;
+        }
+
+        .pk-1 {
+            margin-top: -50px;
+        }
+
+        .pk-2 {
+            position: relative;
+            top: -50px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <a href="../index.html" class="logo" title="回到demo首页"></a>
+    <!-- <a href="https://css.w3ctech.com/?cssworld.cn" target="_blank" class="mmbb" title="了解本次大会"></a>
+    <style>.mmbb{position: absolute;right:0; width: 560px; height: inherit;background:url(http://wx4.sinaimg.cn/mw690/4b4d632fgy1fpo5e8et0nj20fk01u74q.jpg) no-repeat right center; background-size: contain;}@media screen and (max-width: 640px) {.mmbb{width:calc(100vw - 160px);background-image:url(http://wx1.sinaimg.cn/mw690/4b4d632fgy1fpo5j7hc21j20g304e3zh.jpg);}}</style> -->
+</div>
+<div class="main">
+    <h1>relative定位和margin定位对比实例页面</h1>
+    <div class="show">
+        <h3>展示</h3>
+        <div class="go-bbs"><a href="http://bbs.cssworld.cn/" class="go-bbs">去论坛 &raquo;</a></div>
+        <div class="demo">
+
+            <div class="table">
+                <div class="td">
+                    <h4>使用margin定位</h4>
+                    <img src="../images/common/m/1.jpg" onclick="this.className='pk-1';">
+                    <p>点击图片应用<code>.pk-1</code></p>
+                </div>
+                <div class="td">
+                    <h4>使用relative定位</h4>
+                    <img src="../images/common/m/1.jpg" onclick="this.className='pk-2';">
+                    <p>点击图片应用<code>.pk-2</code></p>
+                </div>
+            </div>
+        </div>
+        <h3>代码</h3>
+        <ul class="codes col2">
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>HTML：</h5>
+                    <pre name="code" class="html">&lt;div class="table"&gt;
+    &lt;div class="td"&gt;
+        &lt;h4&gt;使用margin定位&lt;/h4&gt;
+        &lt;img src="1.jpg" onclick="this.className='pk-1';"&gt;
+        &lt;p&gt;点击图片应用&lt;code&gt;.pk-1&lt;/code&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="td"&gt;
+        &lt;h4&gt;使用relative定位&lt;/h4&gt;
+        &lt;img src="1.jpg" onclick="this.className='pk-2';"&gt;
+        &lt;p&gt;点击图片应用&lt;code&gt;.pk-2&lt;/code&gt;&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>CSS：</h5>
+                    <pre name="code" class="css">.table {
+    width: 300px;
+    display: inline-table;
+    table-layout: fixed;
+}
+.td {
+    display: table-cell;
+}
+.pk-1 {
+    margin-top: -50px;
+}
+.pk-2 {
+    position: relative;
+    top: -50px;
+}</pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="footer">
+    <p>Designed &amp; Powered by <a href="http://www.zhangxinxu.com/" target="_blank">zhangxinxu</a></p>
+    <p><a href="../index.html" class="index">Demo索引地图</a> &emsp; <a href="http://bbs.cssworld.cn/">访问论坛</a></p>
+
+</div>
+<div class="ad_bottom"></div>
+<!-- 以下脚本是无关紧要 -->
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=57424410" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/js/all.js"></script>
+<script type="text/javascript">
+  DlHighlight.HELPERS.highlightByName("code", "pre");
+</script>
+</body>
+</html>

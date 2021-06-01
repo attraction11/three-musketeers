@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>永无尽头--链模式</title>
+    <script src="jquery.min.js"></script>
+</head>
+<!--链模式：
+       通过在对象方法中将当前对象返回，实现对同一个对象多个方法的链式调用。
+-->
+<body>
+    <div id="demo">11</div>
+    <span class="test">22</span>
+    <span class="test">33</span>
+    <span class="test">44</span>
+    <span class="test">55</span>
+    <script>
+        // selector 选择符, context 上下文
+        var A = function (selector, context) {
+            return new A.fn.init(selector, context);
+        };
+        A.fn = A.prototype = {
+            // 强化构造器
+            constructor: A,
+            init: function(selector, context) {
+                // 获取元素长度
+                this.length = 0;
+                // 默认获取元素的上下文为document
+                context = context || document;
+                // 如果是id选择符
+                if (~selector.indexOf('#')) {
+                    // 截取id并选择
+                    this[0] = document.getElementById(selector.slice(1));
+                    this.length = 1;
+                } else {
+                    // 在上下文中选择元素
+                    var doms = context.getElementsByTagName(selector),
+                        i = 0,
+                        len = doms.length;
+                    for (; i < len; i++) {
+                        // 压入this中
+                        this[i] = doms[i]
+                    }
+                    // 校正长度
+                    this.length = len;
+                }
+                // 保存上下文
+                this.context = context;
+                // 保存选择符
+                this.selector = selector;
+                // 返回对象
+                return this;
+            },
+            // 增强数组,一些浏览器解析引擎在判断对象是否是数组的时候，
+            // 会判断是否具有数组的方法来确定是否用数组的方式展示。
+            push: [].push,
+            sort: [].sort,
+            splice: [].splice
+        };
+        A.fn.init.prototype = A.fn;
+
+        // 对象拓展
+        A.extend = A.fn.extend = function() {
+          // 拓展对象从第二个参数算起
+          var i = 1,
+              // 获取参数长度
+              len = arguments.length,
+              target = arguments[0],
+              // 拓展对象中属性
+              j;
+          // 如果只传入一个参数
+          if (i === len) {
+              target = this;
+              i--;
+          }
+          // 遍历参数中的拓展对象
+          for (; i < len; i++) {
+              for (j in arguments[i]) {
+                  target[j] = arguments[i][j];
+              }
+          }
+          return target;
+        };
+
+        A.fn.extend({
+            // 添加事件
+            on: (function () {
+                // 标准浏览器DOM2级事件
+                if (document.addEventListener) {
+                    return function (type, fn) {
+                        var i = this.length - 1;
+                        // 遍历所有元素添加事件
+                        for (; i >= 0; i--) {
+                            this[i].addEventListener(type, fn, false);
+                        }
+                        // 返回源对象
+                        return this;
+                    }
+                    // IE浏览器DOM2事件
+                } else if (document.attachEvent) {
+                    return function (type, fn) {
+                        var i = this.length - 1;
+                        for (; i >= 0; i--) {
+                            this[i].addEvent('on' + type, fn);
+                        }
+                        return this;
+                    }
+                    // 不支持DOM2级事件浏览器添加事件
+                } else {
+                    return function (type, fn) {
+                        var i = this.length - 1;
+                        for (; i >= 0; i--) {
+                            this[i]['on' + type] = fn;
+                        }
+                        return this;
+                    }
+                }
+            })()
+        });
+
+        var demo = A.extend({first: 1}, {second: 2}, {third: 3});
+        A.extend(A.fn, {version: '1.0'});
+
+        console.log(demo);
+        console.log(A('demo').version);
+        // A.fn.on('click', function () {
+        //     console.log('测试点击')
+        // })
+        // console.log(A('span'));
+        // console.log($('span'));
+    </script>
+</body>
+
+</html>

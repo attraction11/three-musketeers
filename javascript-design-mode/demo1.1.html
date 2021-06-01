@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>灵活的JavaScript</title>
+</head>
+
+<body>
+    <div>JavaScript设计模式</div>
+    <script src="./prototype-1.6.0.3.js"></script>
+    <script>
+        /*1、不使用prototype-1.6.0.3.js库的方式*/
+        // 定义对象
+        var funObj = function (divide) {
+            this.divide = divide;
+            this.cubic = function() {
+                console.log('cubic');
+                return this
+            }
+        }
+
+        // 对象的原型扩展
+        funObj.prototype = {
+            add: function (add) {
+                console.log(add);
+                return this;
+            },
+            minus: function () {
+                console.log('minus');
+                return this;
+            },
+            take: function () {
+                console.log('take');
+                return this;
+            }
+        }
+
+        // 实例化对象
+        var a = new funObj('divide')
+
+        // 实例化对象的链式调用
+        console.log(a.add('add').minus().cubic().take())
+        console.log(a.divide)
+
+
+
+        /* 2、使用prototype-1.6.0.3.js库的方式
+        // Function对象的原型扩展(为函数添加多个方法的addMethod方法)
+        Function.prototype.addMethod = function (name, fn) {
+            this[name] = fn
+        }
+
+        // 实例化Function对象
+        var methods = new Function()
+
+        // 实例化Function对象添加属性与方法
+        methods.addMethod('add', function () {
+            console.log(this)
+            return this
+        })
+        methods.addMethod('minus', function () {
+            console.log('minus')
+            return this
+        })
+
+        // 链式调用
+        methods.add().minus()*/
+
+    </script>
+</body>
+
+</html>

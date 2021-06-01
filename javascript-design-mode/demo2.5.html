@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多态</title>
+</head>
+
+<body>
+    <script>
+        function Add() {
+            // 安全模式
+            if (this instanceof Add) {
+                // 无参数的情况
+                function zero() {
+                    return 10;
+                }
+                // 无参数的情况
+                function one(num) {
+                    return 10 + num;
+                }
+                // 无参数的情况
+                function two(num1, num2) {
+                    return 10 + num1 + num2;
+                }
+                this.add = function () {
+                    var arg = arguments;
+                    len = arg.length
+                    switch (len) {
+                        // 如果没有参数
+                        case 0:
+                            return zero()
+                            // 如果没有参数
+                        case 1:
+                            return one(arg[0])
+                            // 如果没有参数
+                        case 2:
+                            return two(arg[0], arg[1])
+                    }
+                }
+            } else {
+                return new Add()
+            }
+        }
+        console.log(Add().add(5, 5))
+    </script>
+
+</body>
+
+</html>

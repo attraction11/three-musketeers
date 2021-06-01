@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="《CSS世界》实例演示之 中文的两端对齐效果实现"/>
+    <meta name="keywords" content="text-align, justify"/>
+    <meta name="author" content="张鑫旭, zhangxinxu"/>
+    <title>中文的两端对齐效果实现 » 《CSS世界》演示页面</title>
+    <script>var _speedMark = new Date();</script>
+    <link rel="stylesheet" href="../common/css/demod647.css?0324">
+    <style>
+        .demo {
+            max-width: 300px;
+            margin: auto;
+            text-align: left;
+        }
+
+        p {
+            padding: 10px 20px;
+            background-color: #f0f3f9;
+        }
+
+        .justify {
+            text-align: justify;
+            text-justify: inter-ideograph;
+        }
+
+        .demo p {
+            margin: .5em 0 1em;
+        }
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <a href="../index.html" class="logo" title="回到demo首页"></a>
+    <!-- <a href="https://css.w3ctech.com/?cssworld.cn" target="_blank" class="mmbb" title="了解本次大会"></a>
+    <style>.mmbb{position: absolute;right:0; width: 560px; height: inherit;background:url(http://wx4.sinaimg.cn/mw690/4b4d632fgy1fpo5e8et0nj20fk01u74q.jpg) no-repeat right center; background-size: contain;}@media screen and (max-width: 640px) {.mmbb{width:calc(100vw - 160px);background-image:url(http://wx1.sinaimg.cn/mw690/4b4d632fgy1fpo5j7hc21j20g304e3zh.jpg);}}</style> -->
+</div>
+<div class="main">
+    <h1>中文的两端对齐效果实现实例页面</h1>
+    <div class="show">
+        <h3>展示</h3>
+        <div class="go-bbs"><a href="http://bbs.cssworld.cn/" class="go-bbs">去论坛 &raquo;</a></div>
+        <div class="demo">
+
+            <strong>居左对齐</strong>
+            <p>这是一段临时想出来的文案，其中可能参杂了几个英文单词，例如CSS，例如JS等。</p>
+            <strong>两端对齐</strong>
+            <p class="justify">这是一段临时想出来的文案，其中可能参杂了几个英文单词，例如CSS，例如JS等。</p>
+        </div>
+        <h3>代码</h3>
+        <ul class="codes col2">
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>HTML：</h5>
+                    <pre name="code" class="html">&lt;strong&gt;居左对齐&lt;/strong&gt;
+&lt;p&gt;这是一段临时想出来的文案，其中可能参杂了几个英文单词，例如CSS，例如JS等。&lt;/p&gt;
+&lt;strong&gt;两端对齐&lt;/strong&gt;
+&lt;p class="justify"&gt;这是一段临时想出来的文案，其中可能参杂了几个英文单词，例如CSS，例如JS等。&lt;/p&gt;</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>CSS：</h5>
+                    <pre name="code" class="css">p {
+  padding: 10px 20px;
+  background-color: #f0f3f9;
+}
+.justify {
+  text-align: justify;
+  text-justify: inter-ideograph;
+}</pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="footer">
+    <p>Designed &amp; Powered by <a href="http://www.zhangxinxu.com/" target="_blank">zhangxinxu</a></p>
+    <p><a href="../index.html" class="index">Demo索引地图</a> &emsp; <a href="http://bbs.cssworld.cn/">访问论坛</a></p>
+
+</div>
+<div class="ad_bottom"></div>
+<!-- 以下脚本是无关紧要 -->
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=57424410" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/js/all.js"></script>
+<script type="text/javascript">
+  DlHighlight.HELPERS.highlightByName("code", "pre");
+</script>
+</body>
+</html>

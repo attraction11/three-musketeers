@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据管理器--数据访问对象模式</title>
+    <script src="jquery.min.js"></script>
+</head>
+<!--链模式：
+       抽象和封装对数据源的访问和储存，DAO通过对数据源链接的管理方便对数据访问与储存
+-->
+<body>
+    <script>
+        var BaseLocalStorage = function (preId, timeSign) {
+            // 定义本地储存数据库前缀
+            this.preId = preId;
+            this.timeSign = timeSign || '|-|';
+        };
+
+        BaseLocalStorage.prototype = {
+            status: {
+                SUCCESS: 0,
+                FAILURE: 0,
+                OVERFLOW: 0,
+                TIMEOUT: 0
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>各种继承方式</title>
+</head>
+
+<body>
+    <script>
+        /* 1、类式继承
+        // 声明父类
+        function SuperClass() {
+            // 构造函数中的属性和方法
+            this.superValue = true
+        }
+        // 为父类原型添加方法
+        SuperClass.prototype.getSuperClass = function() {
+            return this.superValue
+        }
+        // 声明子类
+        function SubClass() {
+            this.subValue = true
+        }
+        SubClass.prototype = new SuperClass()
+
+        // 为子类原型添加方法
+        SubClass.prototype.getSubClass = function() {
+            return this.subValue
+        }
+
+        var instance = new SubClass();
+        // instanceof通过判断对象的prototype链来判断对象是否是某个类的实例
+        console.log(instance.getSuperClass())
+        console.log(instance.getSubClass())
+        console.log(instance instanceof SubClass)
+        console.log(instance instanceof SuperClass)
+        console.log(SubClass.prototype instanceof SuperClass)*/
+
+
+        // 2、这种类式继承会存在两个问题：1、子类是通过原型的方式继承的父类的，
+        // 因此如果更改子类原型从父类构造函数中继承来的共有属性就会直接影响到其他子类
+        /*function SuperClass() {
+            this.books = ['javascript', 'css', 'html']
+        }
+        function SubClass() {}
+        SubClass.prototype = new SuperClass();
+        var instance1 = new SubClass()
+        var instance2 = new SubClass()
+        console.log(instance2.books)            // ["javascript", "css", "html"]
+        instance1.books.push('设计模式')
+        console.log(instance2.books)            // ["javascript", "css", "html", "设计模式"]*/
+
+        /* 3、构造函数式的继承
+        // 声明父类
+        function SuperClass(id) {
+            // 引用类型共有属性
+            this.books = ["javascript", "css", "html"];
+            // 值类型共有属性
+            this.id = id
+        }
+        // 父类声明原型方法
+        SuperClass.prototype.showBooks = function() {
+            console.log(this.books);
+        }
+        // 声明子类
+        function SubClass(id) {
+            // 继承父类
+            // 构造函数式继承的精华，更改了函数的作用环境
+            SuperClass.call(this, id)
+        }
+
+        // 创建第一个子类实例
+        var instance1 = new SubClass(10);
+        // 创建第一个子类实例
+        var instance2 = new SubClass(11);
+
+        instance1.books.push('设计模式')
+        console.log(instance1.books)
+        console.log(instance1.id)
+        console.log(instance2.books)
+        console.log(instance2.id) */
+
+        /* 4、组合继承(构造函数继承与原型继承)
+        // 声明父类
+        function SuperClass(name) {
+            // 引用类型共有属性
+            this.books = ["javascript", "css", "html"];
+            // 值类型共有属性
+            this.name = name
+        }
+        // 父类声明原型方法
+        SuperClass.prototype.getName = function() {
+            console.log(this.name);
+        }
+        // 声明子类
+        function SubClass(name, time) {
+            // 继承父类
+            // 构造函数式继承的精华，更改了函数的作用环境
+            SuperClass.call(this, name)
+            this.time = time;
+        }
+        // 类式继承，子类原型继承父类
+        SubClass.prototype = new SuperClass()
+        // 子类原型方法
+        SubClass.prototype.getTime = function() {
+            console.log(this.time)
+        }
+        // 创建第一个子类实例
+        var instance1 = new SubClass('js book', 2014);
+        instance1.books.push('设计模式')
+        console.log(instance1.books)
+        instance1.getName()
+        instance1.getTime()
+        // 创建第二个子类实例
+        var instance2 = new SubClass('css book', 2013);
+        console.log(instance2.books)
+        instance2.getName()
+        instance2.getTime()*/
+
+        /* 5、简介的继承者（原型式继承）
+        function inheritObject(o) {
+            // 声明一个过渡函数对象
+            function F() {}
+            // 过渡对象的原型继承父对象
+            F.prototype = o;
+            // 返回过渡对象的一个实例，该实例的原型继承了父对象
+            return new F()
+
+        }
+        var book = {
+            name: 'js book',
+            alikeBook: ['css book', 'html book']
+        }
+        var newBook = inheritObject(book)
+        newBook.name = 'ajax book'
+        newBook.alikeBook.push('xml book')
+
+        var otherBook = inheritObject(book)
+        otherBook.name = 'flash book'
+        otherBook.alikeBook.push('as book')
+
+        console.log(newBook.name)
+        console.log(newBook.alikeBook)
+        console.log(otherBook.name)
+        console.log(otherBook.alikeBook) */
+
+        /* 6、如虎添翼（寄生式继承）
+        function inheritObject(o) {
+            // 声明一个过渡函数对象
+            function F() {}
+            // 过渡对象的原型继承父对象
+            F.prototype = o;
+            // 返回过渡对象的一个实例，该实例的原型继承了父对象
+            return new F()
+        }
+        // 声明基对象
+        var book = {
+            name: 'js book',
+            alikeBook: ['css book', 'html book']
+        }
+        function createBook(obj) {
+            // 通过原型继承方式创建新对象
+            var o = new inheritObject(obj)
+            o.getName = function() {
+                console.log(name)
+            }
+            return o
+        }*/
+
+        /* 7、终极继承（寄生组合继承）*/
+        function inheritObject(o) {
+            // 声明一个过渡函数对象
+            function F() {}
+            // 过渡对象的原型继承父对象
+            F.prototype = o;
+            // 返回过渡对象的一个实例，该实例的原型继承了父对象
+            return new F()
+        }
+        // 传递参数subclass子类、superClass父类
+        function inheritPrototype(SubClass, SuperClass) {
+            // 复制一份父类的原型副本保存在变量中
+            var p = inheritObject(SuperClass.prototype)
+            // 修正因为重写子类原型导致子类的constructor属性被修改
+            p.constructor = SubClass
+            SubClass.prototype = p　
+        }
+
+        // 声明父类
+        function SuperClass(name) {
+            // 引用类型共有属性
+            this.books = ["javascript", "css", "html"];
+            // 值类型共有属性
+            this.name = name
+        }
+        // 父类声明原型方法
+        SuperClass.prototype.getName = function () {
+            console.log(this.name);
+        }
+        // 声明子类
+        function SubClass(name, time) {
+            // 继承父类
+            // 构造函数式继承的精华，更改了函数的作用环境
+            SuperClass.call(this, name)
+            this.time = time;
+        }
+        // 寄生式继承父类原型
+        inheritPrototype(SubClass, SuperClass)
+        // 子类原型方法
+        SubClass.prototype.getTime = function () {
+            console.log(this.time)
+        }
+        // 创建第一个子类实例
+        var instance1 = new SubClass('js book', 2014);
+        var instance2 = new SubClass('css book', 2013);
+        instance1.books.push('xml')
+        console.log(instance1.books)
+        console.log(instance2.books)
+        instance2.getName()
+        instance2.getTime()
+    </script>
+</body>
+
+</html>

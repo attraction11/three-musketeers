@@ -1,0 +1,316 @@
+/*样式重置*/
+html, body, div, span, applet, object,
+iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+pre, a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp, small,
+strike, strong, sub, sup, tt, var, b, u, i,
+center, dl, dt, dd, ol, ul, li, fieldset,
+form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td, article, aside, canvas,
+details, embed, figure, figcaption, footer, header,
+hgroup, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    outline: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;                     /* IE 8+ */
+}
+html { height: 101%; }
+body { font-size: 62.5%; line-height: 1; font-family: Arial, Tahoma, sans-serif; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+strong { font-weight: bold; }
+table { border-collapse: collapse; border-spacing: 0; }
+img { border: 0; max-width: 100%; }
+p { font-size: 1.2em; line-height: 1.0em; color: #333; }
+/*公共样式*/
+.none {display:none !important}
+.hidden {visibility:hidden}
+.tc {text-align:center}
+.tr {text-align:right}
+.tl {text-align:left}
+.fl {float:left}
+.fr {float:right}
+.t2 {text-indent:2em}
+.fb {font-weight:bold}
+.fn {font-weight:normal}
+.vm {vertical-align:middle}
+.pr {position:relative}
+.pa {position:absolute}
+.mb10 {margin-bottom:10px;}
+/*垂直居中*/
+.vertical-center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);   /* Chrome 4+ */
+    -o-transform: translate(-50%, -50%);        /* Opera 11.5+ */
+    transform: translate(-50%, -50%);           /* IE 9+ */
+}
+/*基于视口垂直居中*/
+.view-vertical-center{
+    width: 100px;
+    margin: 50vh auto 0;                   /* vh: 1% of viewport's of height, IE9+, Opera 15+, Chrome 20+ */
+    -webkit-transform: translateY(-50%);   /* Chrome 4+ */
+    -o-transform: translateY(-50%);        /* Opera 11.5+ */
+    transform: translateY(-50%);           /* IE 9+ */
+}
+/*flex垂直居中容器*/
+.flex-center-wrap{
+    display: flex;
+    display: -webkit-flex;                 /* Chrome 4+ */
+    display: -moz-flex;                    /* Firefox 2+ */
+    display: -ms-flex;                     /* IE 10+ */
+    min-height: 100vh;
+    margin: 0;
+}
+/*flex垂直居中*/
+.flex-vertical-center{
+    display: flex;
+    display: -webkit-flex;                 /* Chrome 4+ */
+    display: -moz-flex;                    /* Firefox 2+ */
+    display: -ms-flex;                     /* IE 10+ */
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+/*强制不换行*/
+.no-wrap{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;             /* Opera 10.1+ */
+}
+/*强制换行*/
+.pre-wrap {
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* IE 5.5+ */
+}
+/*清浮动*/
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+/*2011新版清浮动*/
+.clearfix:before,
+.container:after {
+    content: "";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+/* IE 6/7 */
+.clearfix {
+    zoom: 1;
+}
+/*遮罩层*/
+.mask_layer {
+    z-index:999;
+    position:fixed;
+    _position:absolute;
+    top:0;left:0;
+    width:100%;
+    height:100%;
+    background:#000;
+    filter:alpha(opacity=50);
+    opacity:.5
+}
+/*CSS3盒内阴影*/
+.inset-shadow {
+    -moz-box-shadow: inset 2px 0 4px #000;        /* Firefox 3.5+ */
+    -webkit-box-shadow: inset 2px 0 4px #000;     /* Chrome 4+ */
+    box-shadow: inset 2px 0 4px #000;             /* IE 9+ */
+}
+/*CSS3盒外阴影*/
+.outset-shadow{
+    -webkit-box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.52);     /* Chrome 62+ */
+    -moz-box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.52);        /* Firefox 49+ */
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.52);             /* IE 不支持rgba */
+    box-shadow: 0 2px 2px -2px #000;
+}
+/*三角形符号*/
+.arrow-3:before {
+    content: "";
+    border-color: transparent #111;
+    border-style: solid;
+    border-width: 0.35em 0 0.35em 0.45em;
+    display: block;
+    height: 0;
+    width: 0;
+    left: -1em;
+    top: 0.9em;
+    position: relative;
+}
+/*多列文本*/
+.columns-3 {
+    text-align: justify;
+    column-count: 3;                              /* IE 10+ */
+    column-gap: 12px;
+    column-rule: 1px solid #c4c8cc;
+    -moz-column-count: 3;                         /* Firefox 2+ */
+    -moz-column-gap: 12px;
+    -moz-column-rule: 1px solid #c4c8cc;
+    -webkit-column-count: 3;                      /* Chrome 4+ */
+    -webkit-column-gap: 12px;
+    -webkit-column-rule: 1px solid #c4c8cc;
+}
+/*固定页脚*/
+.fix-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #333;
+    z-index: 999;
+}
+/*相对页脚*/
+.relative-footer{
+    position:absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background:#333;
+    text-align:center;
+}
+/*负外边距页脚*/
+.margin-footer{
+    height: 50px;
+    margin-top: -50px;
+    background-color: #333;
+}
+/*在可点击的标签上强制手型*/
+.pointer {
+    cursor: pointer;
+}
+/*CSS3对话气泡(提示框)*/
+.chat-bubble {
+    background-color: #ededed;
+    border: 2px solid #666;
+    font-size: 35px;
+    line-height: 1.3em;
+    margin: 10px auto;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    width: 300px;
+    border-radius: 20px;                              /* IE 9+ */
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px #888;
+    font-family: 'Bangers', arial, serif;
+}
+.chat-bubble-arrow-border {
+    border-color: #666 transparent transparent transparent;
+    border-style: solid;
+    border-width: 20px;
+    height: 0;
+    width: 0;
+    position: absolute;
+    bottom: -42px;
+    left: 30px;
+}
+.chat-bubble-arrow {
+    border-color: #ededed transparent transparent transparent;
+    border-style: solid;
+    border-width: 20px;
+    height: 0;
+    width: 0;
+    position: absolute;
+    bottom: -39px;
+    left: 30px;
+}
+/*按钮样式*/
+.btn {
+    display: inline-block;
+    padding: 3px 8px;
+    margin-bottom: 0;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid #ff0000;
+    border-radius: 4px;
+}
+/*移动端1px适配*/
+.border_1px:before {
+    content:'';
+    position:absolute;
+    top:0;
+    height:1px;
+    width:100%;
+    background-color:#000;
+    transform-origin:50% 0%;
+}
+@media only screen and (-webkit-min-device-pixel-ratio:2) {
+    .border_1px:before {
+        transform:scaleY(0.5);                 /* IE 9+ */
+    }
+}
+@media only screen and (-webkit-min-device-pixel-ratio:3) {
+    .border_1px:before {
+        transform:scaleY(0.33);
+    }
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 320px) and (max-device-width : 480px) {
+    /* Styles */
+}
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+    /* Styles */
+}
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+    /* Styles */
+}
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    /* Styles */
+}
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+    /* Styles */
+}
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+    /* Styles */
+}
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1224px) {
+    /* Styles */
+}
+/* Large screens ----------- */
+@media only screen and (min-width : 1824px) {
+    /* Styles */
+}
+/* iPhone 4 ----------- */
+@media only screen and (-webkit-min-device-pixel-ratio:1.5), only screen and (min-device-pixel-ratio:1.5) {
+    /* Styles */
+}

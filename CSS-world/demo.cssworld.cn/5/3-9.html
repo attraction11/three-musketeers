@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="《CSS世界》实例演示之 vertical-align文本类属性值深入"/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content="张鑫旭, zhangxinxu"/>
+    <title>vertical-align文本类属性值深入 » 《CSS世界》演示页面</title>
+    <script>var _speedMark = new Date();</script>
+    <link rel="stylesheet" href="../common/css/demod647.css?0324">
+    <style>
+        .box {
+            width: 300px;
+            margin: auto;
+            background-color: #f0f3f9;
+            text-align: left;
+            font-size: 16px;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .box img {
+            height: 96px;
+        }
+
+        .box-1 img {
+            vertical-align: text-top;
+        }
+
+        .box-2 img {
+            vertical-align: text-bottom;
+        }
+
+        .demo h4,
+        .explain {
+            width: 300px;
+            margin: 1em auto .5em;
+            text-align: left;
+            padding-top: 1px;
+        }
+
+        .wrap {
+            display: inline-block;
+            line-height: 0;
+            color: red;
+        }
+
+        .wrap:before,
+        .wrap:after {
+            content: '';
+            display: none;
+            position: absolute;
+            left: 0;
+            right: 0;
+            border-top: 1px solid;
+        }
+
+        .box-1 .wrap:before {
+            display: block;
+        }
+
+        .box-2 .wrap:after {
+            display: block;
+        }
+
+        .f16 {
+            font-size: 16px;
+        }
+
+        .f24 {
+            font-size: 24px;
+        }
+
+        .f32 {
+            font-size: 32px;
+        }
+
+        .f16, .f24, .f32 {
+            background-color: #308CFE;
+            color: #fff;
+        }
+
+        .explain label {
+            margin-right: 1em;
+        }
+
+        .explain input {
+            width: 1.2em;
+            height: 1.2em;
+            vertical-align: -.25ex;
+        }
+
+        :checked + label {
+            font-weight: bold;
+        }
+
+        .explain p {
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <a href="../index.html" class="logo" title="回到demo首页"></a>
+    <!-- <a href="https://css.w3ctech.com/?cssworld.cn" target="_blank" class="mmbb" title="了解本次大会"></a>
+    <style>.mmbb{position: absolute;right:0; width: 560px; height: inherit;background:url(http://wx4.sinaimg.cn/mw690/4b4d632fgy1fpo5e8et0nj20fk01u74q.jpg) no-repeat right center; background-size: contain;}@media screen and (max-width: 640px) {.mmbb{width:calc(100vw - 160px);background-image:url(http://wx1.sinaimg.cn/mw690/4b4d632fgy1fpo5j7hc21j20g304e3zh.jpg);}}</style> -->
+</div>
+<div class="main">
+    <h1>vertical-align文本类属性值深入实例页面</h1>
+    <div class="show">
+        <h3>展示</h3>
+        <div class="go-bbs"><a href="http://bbs.cssworld.cn/" class="go-bbs">去论坛 &raquo;</a></div>
+        <div class="demo">
+            <div class="explain">设置父级font-size大小：<br>
+                <input type="radio" name="size" id="r1" value="16px" checked><label for="r1">16px</label>
+                <input type="radio" name="size" id="r2" value="24px"><label for="r2">24px</label>
+                <input type="radio" name="size" id="r3" value="32px"><label for="r3">32px</label>
+            </div>
+            <h4>1. vertical-align:text-top</h4>
+            <div class="box box-1">
+                <span class="wrap"><img src="../images/common/m/1.jpg"></span>
+                <span class="f16">16px</span><span class="f24">24px</span><span class="f32">32px</span>
+            </div>
+            <h4>2. vertical-align:text-bottom</h4>
+            <div class="box box-2">
+                <span class="wrap"><img src="../images/common/m/1.jpg"></span>
+                <span class="f16">16px</span><span class="f24">24px</span><span class="f32">32px</span>
+            </div>
+
+            <div class="explain">
+                <p>图片的顶边缘或底边缘和父级font-size大小匹配的文字的content area的上边缘或下边缘对齐。</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+  var eleRadios = document.querySelectorAll('input[type="radio"]');
+  var eleBox1 = document.querySelector('.box-1');
+  var eleBox2 = document.querySelector('.box-2');
+
+  if (eleRadios.length && eleBox1 && eleBox2) {
+    for (var index = 0; index < eleRadios.length; index += 1) {
+      eleRadios[index].onclick = function () {
+        eleBox1.style.fontSize = this.value;
+        eleBox2.style.fontSize = this.value;
+      };
+    }
+  }
+</script>
+
+
+<div class="footer">
+    <p>Designed &amp; Powered by <a href="http://www.zhangxinxu.com/" target="_blank">zhangxinxu</a></p>
+    <p><a href="../index.html" class="index">Demo索引地图</a> &emsp; <a href="http://bbs.cssworld.cn/">访问论坛</a></p>
+
+</div>
+<div class="ad_bottom"></div>
+<!-- 以下脚本是无关紧要 -->
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=57424410" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/js/all.js"></script>
+<script type="text/javascript">
+  DlHighlight.HELPERS.highlightByName("code", "pre");
+</script>
+</body>
+</html>

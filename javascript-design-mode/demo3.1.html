@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简单工厂模式</title>
+</head>
+
+<body>
+    <script>
+        // 篮球基类
+        var Basketball = function () {
+            this.insto = '篮球盛行于美国'
+        }
+        Basketball.prototype = {
+            getMember: function () {
+                console.log('每个队伍需要5个队员')
+            },
+            getBallSize: function () {
+                console.log('篮球很大')
+            }
+        }
+        // 足球基类
+        var Football = function () {
+            this.insto = '足球在世界范围内流行'
+        }
+        Football.prototype = {
+            getMember: function () {
+                console.log('每个队伍需要11个队员')
+            },
+            getBallSize: function () {
+                console.log('足球很大')
+            }
+        }
+        // 网球基类
+        var Tennis = function () {
+            this.insto = '篮球盛行于美国'
+        }
+        Tennis.prototype = {
+            getMember: function () {
+                console.log('每个队伍需要1个队员')
+            },
+            getBallSize: function () {
+                console.log('网球很小')
+            }
+        }
+        // 商店工厂
+        var SportsFactory = function (name) {
+            switch (name) {
+                case 'NBA':
+                    return new Basketball();
+                case 'wordCup':
+                    return new Football();
+                case 'NBA':
+                    return new Tennis();
+            }
+        }
+        // 为世界杯创建一个足球，只需记住这个运动工厂SportsFactory，调用并创建
+        var footnall = SportsFactory('wordCup');
+        console.log(footnall)
+        console.log(footnall.insto)
+        footnall.getMember()
+    </script>
+</body>
+
+</html>

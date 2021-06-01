@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="《CSS世界》实例演示之 visibility:hidden，display:none和无障碍访问"/>
+    <meta name="keywords" content="visibility:hidden, display:none"/>
+    <meta name="author" content="张鑫旭, zhangxinxu"/>
+    <title>visibility:hidden，display:none和无障碍访问 » 《CSS世界》演示页面</title>
+    <script>var _speedMark = new Date();</script>
+    <link rel="stylesheet" href="../common/css/demod647.css?0324">
+    <style>
+        .overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, .5);
+            z-index: 9;
+        }
+
+        .none {
+            display: none;
+        }
+
+        .hidden {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <a href="../index.html" class="logo" title="回到demo首页"></a>
+    <!-- <a href="https://css.w3ctech.com/?cssworld.cn" target="_blank" class="mmbb" title="了解本次大会"></a>
+    <style>.mmbb{position: absolute;right:0; width: 560px; height: inherit;background:url(http://wx4.sinaimg.cn/mw690/4b4d632fgy1fpo5e8et0nj20fk01u74q.jpg) no-repeat right center; background-size: contain;}@media screen and (max-width: 640px) {.mmbb{width:calc(100vw - 160px);background-image:url(http://wx1.sinaimg.cn/mw690/4b4d632fgy1fpo5j7hc21j20g304e3zh.jpg);}}</style> -->
+</div>
+<div class="main">
+    <h1>visibility:hidden，display:none和无障碍访问实例页面</h1>
+    <div class="show">
+        <h3>展示</h3>
+        <div class="go-bbs"><a href="http://bbs.cssworld.cn/" class="go-bbs">去论坛 &raquo;</a></div>
+        <div class="demo">
+
+            <p><a href="javascript:" id="button1" role="button">点击显示遮罩层，display隐藏</a></p>
+            <div id="overlay1" class="overlay none" role="button" title="点击关闭浮层"></div>
+            <p><a href="javascript:" id="button2" role="button">点击显示遮罩层，visibility隐藏</a></p>
+            <div id="overlay2" class="overlay hidden" role="button" title="点击关闭浮层"></div>
+        </div>
+        <h3>代码</h3>
+        <ul class="codes col3">
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>HTML：</h5>
+                    <pre name="code" class="html">&lt;p&gt;&lt;a href="javascript:" id="button1" role="button"&gt;点击显示遮罩层，display隐藏&lt;/a&gt;&lt;/p&gt;
+&lt;div id="overlay1" class="overlay none" role="button" title="点击关闭浮层"&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href="javascript:" id="button2" role="button"&gt;点击显示遮罩层，visibility隐藏&lt;/a&gt;&lt;/p&gt;
+&lt;div id="overlay2" class="overlay hidden" role="button" title="点击关闭浮层"&gt;&lt;/div&gt;</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>CSS：</h5>
+                    <pre name="code" class="css">.overlay {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: rgba(0,0,0,.5);
+  z-index: 9;
+}
+.none {
+  display: none;
+}
+.hidden {
+  visibility: hidden;
+}</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>JS：</h5>
+                    <pre name="code" class="js">var eleBtn1 = document.getElementById('button1');
+var eleBtn2 = document.getElementById('button2');
+var eleOverlay1 = document.getElementById('overlay1');
+var eleOverlay2 = document.getElementById('overlay2');
+
+if (eleBtn1 &amp;&amp; eleBtn2 &amp;&amp; eleOverlay1 &amp;&amp; eleOverlay2) {
+  eleBtn1.onclick = function () {
+    eleOverlay1.className = 'overlay';
+    eleOverlay1.title = '点击关闭浮层';
+  };
+  eleBtn2.onclick = function () {
+    eleOverlay2.className = 'overlay';
+    eleOverlay2.title = '点击关闭浮层';
+  };
+  eleOverlay1.onclick = function () {
+    eleOverlay1.className = 'overlay none';
+    eleOverlay1.title = '浮层已关闭';
+  };
+  eleOverlay2.onclick = function () {
+    eleOverlay2.className = 'overlay hidden';
+    eleOverlay2.title = '浮层已关闭';
+  };
+}</pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+  var eleBtn1 = document.getElementById('button1');
+  var eleBtn2 = document.getElementById('button2');
+  var eleOverlay1 = document.getElementById('overlay1');
+  var eleOverlay2 = document.getElementById('overlay2');
+
+  if (eleBtn1 && eleBtn2 && eleOverlay1 && eleOverlay2) {
+    eleBtn1.onclick = function () {
+      eleOverlay1.className = 'overlay';
+      eleOverlay1.title = '点击关闭浮层';
+    };
+    eleBtn2.onclick = function () {
+      eleOverlay2.className = 'overlay';
+      eleOverlay2.title = '点击关闭浮层';
+    };
+    eleOverlay1.onclick = function () {
+      eleOverlay1.className = 'overlay none';
+      eleOverlay1.title = '浮层已关闭';
+    };
+    eleOverlay2.onclick = function () {
+      eleOverlay2.className = 'overlay hidden';
+      eleOverlay2.title = '浮层已关闭';
+    };
+  }
+</script>
+
+
+<div class="footer">
+    <p>Designed &amp; Powered by <a href="http://www.zhangxinxu.com/" target="_blank">zhangxinxu</a></p>
+    <p><a href="../index.html" class="index">Demo索引地图</a> &emsp; <a href="http://bbs.cssworld.cn/">访问论坛</a></p>
+
+</div>
+<div class="ad_bottom"></div>
+<!-- 以下脚本是无关紧要 -->
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=57424410" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/js/all.js"></script>
+<script type="text/javascript">
+  DlHighlight.HELPERS.highlightByName("code", "pre");
+</script>
+</body>
+</html>

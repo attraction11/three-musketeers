@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div></div>
+<script type="text/javascript" src="../jquery-2.1.1.js"></script>
+<script type="text/javascript">
+
+  var optionsCache = {};
+  var rnotwhite = (/\S+/g);
+  // Convert String-formatted options into Object-formatted ones and store in cache
+
+  function show(data) {
+    if (typeof data === 'object') {
+      for (var key in data) {
+        $("body").append('<li>key->' + key + '; value->'+ data[key] +'</li>')
+      }
+    } else {
+      $("body").append('<li>' + data + '</li>')
+    }
+  }
+
+  function createOptions(options) {
+    var object = optionsCache[options] = {};
+    jQuery.each(options.match(rnotwhite) || [], function(_, flag) {
+      object[flag] = true;
+    });
+    return object;
+  }
+
+  function callback(options) {
+    options = typeof options === "string" ?
+      (optionsCache[options] || createOptions(options)) :
+      jQuery.extend({}, options);
+    show(options)
+  }
+
+  callback('once memory')
+
+
+</script>
+</body>
+</html>

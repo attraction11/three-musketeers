@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="《CSS世界》实例演示之 等宽字体与图形表现"/>
+    <meta name="keywords" content="font-size"/>
+    <meta name="author" content="张鑫旭, zhangxinxu"/>
+    <title>等宽字体与图形表现 » 《CSS世界》演示页面</title>
+    <script>var _speedMark = new Date();</script>
+    <link rel="stylesheet" href="../common/css/demod647.css?0324">
+    <style>
+        .demo ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        select {
+            display: inline-block;
+            height: 40px;
+            margin: 0;
+            border: 1px solid #d0d0d5;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            vertical-align: middle
+        }
+
+        select[hidden], select[hidden] + .ui-select {
+            display: none
+        }
+
+        .ui-select {
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            height: 40px;
+            vertical-align: middle;
+            -webkit-animation: fadeIn .2s;
+            animation: fadeIn .2s;
+            font-size: 14px;
+            position: relative
+        }
+
+        .ui-select ~ .ui-button {
+            vertical-align: middle
+        }
+
+        .ui-select.active {
+            z-index: 3
+        }
+
+        .ui-select-button {
+            display: block;
+            height: 20px;
+            line-height: 20px;
+            padding: 9px 27px 9px 12px;
+            color: #4c5161;
+            border: 1px solid #d0d0d5;
+            border-radius: 4px;
+            background-color: #fff;
+            -webkit-transition: border-color .15s, background-color .15s;
+            transition: border-color .15s, background-color .15s;
+            cursor: pointer
+        }
+
+        .ui-select-button:hover {
+            color: #4c5161;
+            border-color: #ababaf
+        }
+
+        :not(:disabled) + .ui-select > .ui-select-button:active {
+            background-color: #f7f9fa
+        }
+
+        .active > a.ui-select-button {
+            border-color: #00a5e0;
+            border-radius: 4px 4px 0 0
+        }
+
+        .reverse > .ui-select-button {
+            border-radius: 0 0 4px 4px
+        }
+
+        .ui-select-text {
+            display: block;
+            width: 100%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden
+        }
+
+        .ui-select-icon {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url(../images/8/icon-arrow.png) no-repeat center;
+            background: url(../images/8/icon-arrow.svg) no-repeat center, none;
+            background-size: 20px 20px;
+            right: 7px;
+            top: 10px
+        }
+
+        .ui-select-datalist {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 39px;
+            display: none;
+            max-height: 304px;
+            padding: 0;
+            border: 1px solid #00a5e0;
+            background-color: #fff;
+            overflow: auto
+        }
+
+        .active > .ui-select-datalist {
+            display: block
+        }
+
+        .reverse > .ui-select-datalist {
+            top: auto;
+            bottom: 39px
+        }
+
+        .ui-select-datalist-li {
+            display: block;
+            line-height: 20px;
+            padding: 9px 12px;
+            background-color: #fff;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            -webkit-transition: background-color .15s;
+            transition: background-color .15s;
+            overflow: hidden;
+            cursor: pointer
+        }
+
+        .ui-select-datalist-li:empty {
+            display: none
+        }
+
+        .ui-select-datalist-li:hover {
+            background-color: #f2fcff
+        }
+
+        .ui-select-datalist > .selected {
+            background-color: #e0f7ff
+        }
+
+        .monospaced {
+            width: 110px;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 14px;
+            letter-spacing: -.2px;
+            text-align: left;
+        }
+
+        .border {
+            width: 120px;
+            height: 40px;
+            border: 10px solid #cd0000;
+            margin: 30px auto 10px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <a href="../index.html" class="logo" title="回到demo首页"></a>
+    <!-- <a href="https://css.w3ctech.com/?cssworld.cn" target="_blank" class="mmbb" title="了解本次大会"></a>
+    <style>.mmbb{position: absolute;right:0; width: 560px; height: inherit;background:url(http://wx4.sinaimg.cn/mw690/4b4d632fgy1fpo5e8et0nj20fk01u74q.jpg) no-repeat right center; background-size: contain;}@media screen and (max-width: 640px) {.mmbb{width:calc(100vw - 160px);background-image:url(http://wx1.sinaimg.cn/mw690/4b4d632fgy1fpo5j7hc21j20g304e3zh.jpg);}}</style> -->
+</div>
+<div class="main">
+    <h1>等宽字体与图形表现实例页面</h1>
+    <div class="show">
+        <h3>展示</h3>
+        <div class="go-bbs"><a href="http://bbs.cssworld.cn/" class="go-bbs">去论坛 &raquo;</a></div>
+        <div class="demo">
+
+            边框类型：<select class="monospaced">
+            <option value="solid" selected>———————</option>
+            <option value="dashed">-------</option>
+            <option value="dotted">·······</option>
+        </select>
+
+            <div id="border" class="border"></div>
+        </div>
+        <h3>代码</h3>
+        <ul class="codes col2">
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>HTML：</h5>
+                    <pre name="code" class="html">边框类型：&lt;select class="monospaced"&gt;
+    &lt;option value="solid" selected&gt;———————&lt;/option&gt;
+    &lt;option value="dashed"&gt;-------&lt;/option&gt;
+    &lt;option value="dotted"&gt;·······&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;div id="border" class="border"&gt;&lt;/div&gt;</pre>
+                </div>
+            </li>
+            <li class="code_li">
+                <div class="code_x">
+                    <h5>CSS：</h5>
+                    <pre name="code" class="css">.monospaced {
+    width: 110px;
+    font-family: Consolas, Monaco, monospace;
+    font-size: 14px;
+    letter-spacing: -.2px;
+}
+
+.border {
+    width: 120px; height: 40px;
+    border: 10px solid #cd0000;
+    margin: 30px auto 10px;
+}</pre>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script src="../common/js/jquery.min.js"></script>
+<script src="../js/8/Select.js"></script>
+<script>
+  $('select').selectMatch();
+
+  var eleBorder = document.getElementById('border');
+  document.getElementsByTagName('select')[0].onchange = function () {
+    eleBorder.style.borderStyle = this.value;
+  };
+</script>
+
+
+<div class="footer">
+    <p>Designed &amp; Powered by <a href="http://www.zhangxinxu.com/" target="_blank">zhangxinxu</a></p>
+    <p><a href="../index.html" class="index">Demo索引地图</a> &emsp; <a href="http://bbs.cssworld.cn/">访问论坛</a></p>
+
+</div>
+<div class="ad_bottom"></div>
+<!-- 以下脚本是无关紧要 -->
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=57424410" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/js/all.js"></script>
+<script type="text/javascript">
+  DlHighlight.HELPERS.highlightByName("code", "pre");
+</script>
+</body>
+</html>
